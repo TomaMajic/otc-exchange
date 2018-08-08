@@ -1,0 +1,978 @@
+{
+  "contractName": "AgentFactory",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_participants",
+          "type": "address[]"
+        },
+        {
+          "name": "_timeToExpire",
+          "type": "uint256"
+        }
+      ],
+      "name": "createExchangeAgent",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getExchangeAgents",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b50611410806100206000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680637ef9eb5d14610051578063a828004e146100bd575b600080fd5b34801561005d57600080fd5b50610066610102565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b838110156100a957808201518184015260208101905061008e565b505050509050019250505060405180910390f35b3480156100c957600080fd5b5061010060048036038101908080359060200190820180359060200191909192939192939080359060200190929190505050610190565b005b6060600080548060200260200160405190810160405280929190818152602001828054801561018657602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001906001019080831161013c575b5050505050905090565b600083838361019d610255565b808060200183815260200182810382528585828181526020019250602002808284378201915050945050505050604051809103906000f0801580156101e6573d6000803e3d6000fd5b50905060008190806001815401808255809150509060018203906000526020600020016000909192909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050505050565b60405161117f80610266833901905600608060405234801561001057600080fd5b5060405161117f38038061117f8339810180604052810190808051820192919060200180519060200190929190505050804201600081905550816003908051906020019061005f92919061009d565b506000600260006101000a81548160ff0219169083151502179055506001600260016101000a81548160ff021916908315150217905550505061016a565b828054828255906000526020600020908101928215610116579160200282015b828111156101155782518260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550916020019190600101906100bd565b5b5090506101239190610127565b5090565b61016791905b8082111561016357600081816101000a81549073ffffffffffffffffffffffffffffffffffffffff02191690555060010161012d565b5090565b90565b611006806101796000396000f3006080604052600436106100ba576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063107e8456146100bf57806327e235e3146100ee5780632dfdf0b5146101455780633ccfd60b1461017057806350188301146101875780635aa68ac0146101b6578063604f9175146102225780636b18eca8146102a5578063b8aede9c146102bc578063cabfaa18146102d3578063da284dcc146102fe578063ea27416d14610329575b600080fd5b3480156100cb57600080fd5b506100d46103aa565b604051808215151515815260200191505060405180910390f35b3480156100fa57600080fd5b5061012f600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506103bd565b6040518082815260200191505060405180910390f35b34801561015157600080fd5b5061015a6103d5565b6040518082815260200191505060405180910390f35b34801561017c57600080fd5b506101856103db565b005b34801561019357600080fd5b5061019c610594565b604051808215151515815260200191505060405180910390f35b3480156101c257600080fd5b506101cb6105a7565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b8381101561020e5780820151818401526020810190506101f3565b505050509050019250505060405180910390f35b34801561022e57600080fd5b50610263600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610635565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156102b157600080fd5b506102ba610668565b005b3480156102c857600080fd5b506102d16106c3565b005b3480156102df57600080fd5b506102e8610bbf565b6040518082815260200191505060405180910390f35b34801561030a57600080fd5b50610313610bcc565b6040518082815260200191505060405180910390f35b34801561033557600080fd5b506103a8600480360381019080803590602001909291908035906020019092919080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610bd2565b005b600260019054906101000a900460ff1681565b60046020528060005260406000206000915090505481565b60015481565b6000806103e733610f02565b15156103f257600080fd5b600260009054906101000a900460ff16151561040d57600080fd5b600560003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169150600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205490508173ffffffffffffffffffffffffffffffffffffffff1663a9059cbb33836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b15801561055457600080fd5b505af1158015610568573d6000803e3d6000fd5b505050506040513d602081101561057e57600080fd5b8101908080519060200190929190505050505050565b600260009054906101000a900460ff1681565b6060600380548060200260200160405190810160405280929190818152602001828054801561062b57602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190600101908083116105e1575b5050505050905090565b60056020528060005260406000206000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b42600054118015610680575060038054905060015414155b151561068b57600080fd5b6000600260016101000a81548160ff0219169083151502179055506001600260006101000a81548160ff021916908315150217905550565b6000806106cf33610f02565b15156106da57600080fd5b6003805490506001541415156106ef57600080fd5b600260019054906101000a900460ff16151561070a57600080fd5b600460006003600081548110151561071e57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549150600460006003600181548110151561079a57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054600460006003600081548110151561081457fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208190555081600460006003600181548110151561089257fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002081905550600560006003600081548110151561090f57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905060056000600360018154811015156109ab57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff166005600060036000815481101515610a4557fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550806005600060036001815481101515610afd57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506001600260006101000a81548160ff0219169083151502179055505050565b6000600380549050905090565b60005481565b60008060008492508273ffffffffffffffffffffffffffffffffffffffff166370a08231856040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b158015610c7557600080fd5b505af1158015610c89573d6000803e3d6000fd5b505050506040513d6020811015610c9f57600080fd5b810190808051906020019092919050505091508273ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b158015610d4d57600080fd5b505af1158015610d61573d6000803e3d6000fd5b505050506040513d6020811015610d7757600080fd5b81019080805190602001909291905050509050610d9d8888610fa590919063ffffffff16565b82141515610daa57600080fd5b610dbd8887610fbe90919063ffffffff16565b81141515610dca57600080fd5b610e1c88600460008773ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054610fbe90919063ffffffff16565b600460008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208190555084600560008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610ef260018054610fbe90919063ffffffff16565b6001819055505050505050505050565b600080600090505b600380549050811015610f9a578273ffffffffffffffffffffffffffffffffffffffff16600382815481101515610f3d57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff161415610f8d5760019150610f9f565b8080600101915050610f0a565b600091505b50919050565b6000828211151515610fb357fe5b818303905092915050565b60008183019050828110151515610fd157fe5b809050929150505600a165627a7a723058207d1c1e4ec8e55697af90cc66b76bdb3be6c39d173f9a1a1fbd1d611775f742de0029a165627a7a723058208e57e5fcdf147a4d4e82ce0f998b9eff9e8329ee04789332c7bb99a37797c2fa0029",
+  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680637ef9eb5d14610051578063a828004e146100bd575b600080fd5b34801561005d57600080fd5b50610066610102565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b838110156100a957808201518184015260208101905061008e565b505050509050019250505060405180910390f35b3480156100c957600080fd5b5061010060048036038101908080359060200190820180359060200191909192939192939080359060200190929190505050610190565b005b6060600080548060200260200160405190810160405280929190818152602001828054801561018657602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001906001019080831161013c575b5050505050905090565b600083838361019d610255565b808060200183815260200182810382528585828181526020019250602002808284378201915050945050505050604051809103906000f0801580156101e6573d6000803e3d6000fd5b50905060008190806001815401808255809150509060018203906000526020600020016000909192909190916101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050505050565b60405161117f80610266833901905600608060405234801561001057600080fd5b5060405161117f38038061117f8339810180604052810190808051820192919060200180519060200190929190505050804201600081905550816003908051906020019061005f92919061009d565b506000600260006101000a81548160ff0219169083151502179055506001600260016101000a81548160ff021916908315150217905550505061016a565b828054828255906000526020600020908101928215610116579160200282015b828111156101155782518260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550916020019190600101906100bd565b5b5090506101239190610127565b5090565b61016791905b8082111561016357600081816101000a81549073ffffffffffffffffffffffffffffffffffffffff02191690555060010161012d565b5090565b90565b611006806101796000396000f3006080604052600436106100ba576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063107e8456146100bf57806327e235e3146100ee5780632dfdf0b5146101455780633ccfd60b1461017057806350188301146101875780635aa68ac0146101b6578063604f9175146102225780636b18eca8146102a5578063b8aede9c146102bc578063cabfaa18146102d3578063da284dcc146102fe578063ea27416d14610329575b600080fd5b3480156100cb57600080fd5b506100d46103aa565b604051808215151515815260200191505060405180910390f35b3480156100fa57600080fd5b5061012f600480360381019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506103bd565b6040518082815260200191505060405180910390f35b34801561015157600080fd5b5061015a6103d5565b6040518082815260200191505060405180910390f35b34801561017c57600080fd5b506101856103db565b005b34801561019357600080fd5b5061019c610594565b604051808215151515815260200191505060405180910390f35b3480156101c257600080fd5b506101cb6105a7565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b8381101561020e5780820151818401526020810190506101f3565b505050509050019250505060405180910390f35b34801561022e57600080fd5b50610263600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610635565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156102b157600080fd5b506102ba610668565b005b3480156102c857600080fd5b506102d16106c3565b005b3480156102df57600080fd5b506102e8610bbf565b6040518082815260200191505060405180910390f35b34801561030a57600080fd5b50610313610bcc565b6040518082815260200191505060405180910390f35b34801561033557600080fd5b506103a8600480360381019080803590602001909291908035906020019092919080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610bd2565b005b600260019054906101000a900460ff1681565b60046020528060005260406000206000915090505481565b60015481565b6000806103e733610f02565b15156103f257600080fd5b600260009054906101000a900460ff16151561040d57600080fd5b600560003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169150600460003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000205490508173ffffffffffffffffffffffffffffffffffffffff1663a9059cbb33836040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b15801561055457600080fd5b505af1158015610568573d6000803e3d6000fd5b505050506040513d602081101561057e57600080fd5b8101908080519060200190929190505050505050565b600260009054906101000a900460ff1681565b6060600380548060200260200160405190810160405280929190818152602001828054801561062b57602002820191906000526020600020905b8160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190600101908083116105e1575b5050505050905090565b60056020528060005260406000206000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b42600054118015610680575060038054905060015414155b151561068b57600080fd5b6000600260016101000a81548160ff0219169083151502179055506001600260006101000a81548160ff021916908315150217905550565b6000806106cf33610f02565b15156106da57600080fd5b6003805490506001541415156106ef57600080fd5b600260019054906101000a900460ff16151561070a57600080fd5b600460006003600081548110151561071e57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549150600460006003600181548110151561079a57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054600460006003600081548110151561081457fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208190555081600460006003600181548110151561089257fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002081905550600560006003600081548110151561090f57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905060056000600360018154811015156109ab57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff166005600060036000815481101515610a4557fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550806005600060036001815481101515610afd57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506001600260006101000a81548160ff0219169083151502179055505050565b6000600380549050905090565b60005481565b60008060008492508273ffffffffffffffffffffffffffffffffffffffff166370a08231856040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b158015610c7557600080fd5b505af1158015610c89573d6000803e3d6000fd5b505050506040513d6020811015610c9f57600080fd5b810190808051906020019092919050505091508273ffffffffffffffffffffffffffffffffffffffff166370a08231306040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b158015610d4d57600080fd5b505af1158015610d61573d6000803e3d6000fd5b505050506040513d6020811015610d7757600080fd5b81019080805190602001909291905050509050610d9d8888610fa590919063ffffffff16565b82141515610daa57600080fd5b610dbd8887610fbe90919063ffffffff16565b81141515610dca57600080fd5b610e1c88600460008773ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054610fbe90919063ffffffff16565b600460008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019081526020016000208190555084600560008673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610ef260018054610fbe90919063ffffffff16565b6001819055505050505050505050565b600080600090505b600380549050811015610f9a578273ffffffffffffffffffffffffffffffffffffffff16600382815481101515610f3d57fe5b9060005260206000200160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff161415610f8d5760019150610f9f565b8080600101915050610f0a565b600091505b50919050565b6000828211151515610fb357fe5b818303905092915050565b60008183019050828110151515610fd157fe5b809050929150505600a165627a7a723058207d1c1e4ec8e55697af90cc66b76bdb3be6c39d173f9a1a1fbd1d611775f742de0029a165627a7a723058208e57e5fcdf147a4d4e82ce0f998b9eff9e8329ee04789332c7bb99a37797c2fa0029",
+  "sourceMap": "57:323:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;57:323:0;;;;;;;",
+  "deployedSourceMap": "57:323:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;295:83;;8:9:-1;5:2;;;30:1;27;20:12;5:2;295:83:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;295:83:0;;;;;;;;;;;;;;;;;102:190;;8:9:-1;5:2;;;30:1;27;20:12;5:2;102:190:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;295:83;346:9;368:6;361:13;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;295:83;:::o;102:190::-;203:13;237;;252;219:47;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;219:47:0;203:63;;270:6;282:5;270:18;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;270:18:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;102:190;;;;:::o;57:323::-;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.23;\n\nimport './ExchangeAgent.sol';\n\ncontract AgentFactory {\n\taddress[] agents;\n\n\tfunction createExchangeAgent(address[] _participants,\n\t\t\t\t\t\t\t\t uint256 _timeToExpire) \n\texternal {\n\t\taddress agent = new ExchangeAgent(_participants, _timeToExpire);\n\t\tagents.push(agent);\n\t}\n\n\tfunction getExchangeAgents() external view returns(address[]) {\n\t\treturn agents;\n\t}\n}\n",
+  "sourcePath": "/Users/tomamajic/Desktop/Toma/Dev/otc-exchange/ethereum/contracts/AgentFactory.sol",
+  "ast": {
+    "absolutePath": "/Users/tomamajic/Desktop/Toma/Dev/otc-exchange/ethereum/contracts/AgentFactory.sol",
+    "exportedSymbols": {
+      "AgentFactory": [
+        38
+      ]
+    },
+    "id": 39,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:0"
+      },
+      {
+        "absolutePath": "/Users/tomamajic/Desktop/Toma/Dev/otc-exchange/ethereum/contracts/ExchangeAgent.sol",
+        "file": "./ExchangeAgent.sol",
+        "id": 2,
+        "nodeType": "ImportDirective",
+        "scope": 39,
+        "sourceUnit": 366,
+        "src": "26:29:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [
+          365
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 38,
+        "linearizedBaseContracts": [
+          38
+        ],
+        "name": "AgentFactory",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 5,
+            "name": "agents",
+            "nodeType": "VariableDeclaration",
+            "scope": 38,
+            "src": "82:16:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_address_$dyn_storage",
+              "typeString": "address[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 3,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "82:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "id": 4,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "82:9:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                "typeString": "address[]"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 27,
+              "nodeType": "Block",
+              "src": "199:93:0",
+              "statements": [
+                {
+                  "assignments": [
+                    14
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 14,
+                      "name": "agent",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 28,
+                      "src": "203:13:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 13,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "203:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 20,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 17,
+                        "name": "_participants",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 8,
+                        "src": "237:13:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                          "typeString": "address[] calldata"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 18,
+                        "name": "_timeToExpire",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10,
+                        "src": "252:13:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                          "typeString": "address[] calldata"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 16,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "NewExpression",
+                      "src": "219:17:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_array$_t_address_$dyn_memory_ptr_$_t_uint256_$returns$_t_contract$_ExchangeAgent_$365_$",
+                        "typeString": "function (address[] memory,uint256) returns (contract ExchangeAgent)"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 15,
+                        "name": "ExchangeAgent",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 365,
+                        "src": "223:13:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ExchangeAgent_$365",
+                          "typeString": "contract ExchangeAgent"
+                        }
+                      }
+                    },
+                    "id": 19,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "219:47:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ExchangeAgent_$365",
+                      "typeString": "contract ExchangeAgent"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "203:63:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 24,
+                        "name": "agent",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14,
+                        "src": "282:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 21,
+                        "name": "agents",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5,
+                        "src": "270:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 23,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "270:11:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_address_$returns$_t_uint256_$",
+                        "typeString": "function (address) returns (uint256)"
+                      }
+                    },
+                    "id": 25,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "270:18:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 26,
+                  "nodeType": "ExpressionStatement",
+                  "src": "270:18:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 28,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "createExchangeAgent",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8,
+                  "name": "_participants",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 28,
+                  "src": "131:23:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 6,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "131:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 7,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "131:9:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10,
+                  "name": "_timeToExpire",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 28,
+                  "src": "165:21:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "165:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "130:57:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "199:0:0"
+            },
+            "scope": 38,
+            "src": "102:190:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 36,
+              "nodeType": "Block",
+              "src": "357:21:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 34,
+                    "name": "agents",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 5,
+                    "src": "368:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                      "typeString": "address[] storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 33,
+                  "id": 35,
+                  "nodeType": "Return",
+                  "src": "361:13:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 37,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getExchangeAgents",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 29,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "321:2:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 33,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 32,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 37,
+                  "src": "346:9:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 30,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "346:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 31,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "346:9:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "345:11:0"
+            },
+            "scope": 38,
+            "src": "295:83:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 39,
+        "src": "57:323:0"
+      }
+    ],
+    "src": "0:381:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/tomamajic/Desktop/Toma/Dev/otc-exchange/ethereum/contracts/AgentFactory.sol",
+    "exportedSymbols": {
+      "AgentFactory": [
+        38
+      ]
+    },
+    "id": 39,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:0"
+      },
+      {
+        "absolutePath": "/Users/tomamajic/Desktop/Toma/Dev/otc-exchange/ethereum/contracts/ExchangeAgent.sol",
+        "file": "./ExchangeAgent.sol",
+        "id": 2,
+        "nodeType": "ImportDirective",
+        "scope": 39,
+        "sourceUnit": 366,
+        "src": "26:29:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [
+          365
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 38,
+        "linearizedBaseContracts": [
+          38
+        ],
+        "name": "AgentFactory",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 5,
+            "name": "agents",
+            "nodeType": "VariableDeclaration",
+            "scope": 38,
+            "src": "82:16:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_address_$dyn_storage",
+              "typeString": "address[]"
+            },
+            "typeName": {
+              "baseType": {
+                "id": 3,
+                "name": "address",
+                "nodeType": "ElementaryTypeName",
+                "src": "82:7:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                }
+              },
+              "id": 4,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "82:9:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                "typeString": "address[]"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 27,
+              "nodeType": "Block",
+              "src": "199:93:0",
+              "statements": [
+                {
+                  "assignments": [
+                    14
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 14,
+                      "name": "agent",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 28,
+                      "src": "203:13:0",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "typeName": {
+                        "id": 13,
+                        "name": "address",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "203:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 20,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 17,
+                        "name": "_participants",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 8,
+                        "src": "237:13:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                          "typeString": "address[] calldata"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 18,
+                        "name": "_timeToExpire",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10,
+                        "src": "252:13:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                          "typeString": "address[] calldata"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 16,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "NewExpression",
+                      "src": "219:17:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_creation_nonpayable$_t_array$_t_address_$dyn_memory_ptr_$_t_uint256_$returns$_t_contract$_ExchangeAgent_$365_$",
+                        "typeString": "function (address[] memory,uint256) returns (contract ExchangeAgent)"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 15,
+                        "name": "ExchangeAgent",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 365,
+                        "src": "223:13:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_ExchangeAgent_$365",
+                          "typeString": "contract ExchangeAgent"
+                        }
+                      }
+                    },
+                    "id": 19,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "219:47:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ExchangeAgent_$365",
+                      "typeString": "contract ExchangeAgent"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "203:63:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 24,
+                        "name": "agent",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 14,
+                        "src": "282:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 21,
+                        "name": "agents",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5,
+                        "src": "270:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                          "typeString": "address[] storage ref"
+                        }
+                      },
+                      "id": 23,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "270:11:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_address_$returns$_t_uint256_$",
+                        "typeString": "function (address) returns (uint256)"
+                      }
+                    },
+                    "id": 25,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "270:18:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 26,
+                  "nodeType": "ExpressionStatement",
+                  "src": "270:18:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 28,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "createExchangeAgent",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 11,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 8,
+                  "name": "_participants",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 28,
+                  "src": "131:23:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 6,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "131:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 7,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "131:9:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10,
+                  "name": "_timeToExpire",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 28,
+                  "src": "165:21:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "165:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "130:57:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "199:0:0"
+            },
+            "scope": 38,
+            "src": "102:190:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 36,
+              "nodeType": "Block",
+              "src": "357:21:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 34,
+                    "name": "agents",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 5,
+                    "src": "368:6:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage",
+                      "typeString": "address[] storage ref"
+                    }
+                  },
+                  "functionReturnParameters": 33,
+                  "id": 35,
+                  "nodeType": "Return",
+                  "src": "361:13:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 37,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getExchangeAgents",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 29,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "321:2:0"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 33,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 32,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 37,
+                  "src": "346:9:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 30,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "346:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 31,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "346:9:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "345:11:0"
+            },
+            "scope": 38,
+            "src": "295:83:0",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 39,
+        "src": "57:323:0"
+      }
+    ],
+    "src": "0:381:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.23+commit.124ca40d.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-08-08T10:24:12.769Z"
+}
