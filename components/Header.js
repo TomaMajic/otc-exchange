@@ -17,7 +17,7 @@ class Header extends React.Component {
 		        <Menu.Menu position='right'>
 					<Menu.Item name='open-trades'>
 						<Link href="">
-							My open trades
+							<a>My open trades</a>
 						</Link>
 					</Menu.Item>
 		        </Menu.Menu>

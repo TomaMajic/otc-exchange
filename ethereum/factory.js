@@ -1,7 +1,7 @@
 import web3 from './web3';
 import AgentFactory from './build/contracts/AgentFactory.json';
 
-const address = '0x067de8a0bcc3c3c5520dc17bb1f0726d985305cc';
+const address = '0x08faebef03a6c9bdfe00a11163a035a5ad08b715';
 
 const instance = new web3.eth.Contract(
 	AgentFactory.abi,

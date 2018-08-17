@@ -14,7 +14,7 @@ var _AgentFactory2 = _interopRequireDefault(_AgentFactory);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var address = '0x067de8a0bcc3c3c5520dc17bb1f0726d985305cc';
+var address = '0x08faebef03a6c9bdfe00a11163a035a5ad08b715';
 
 var instance = new _web2.default.eth.Contract(_AgentFactory2.default.abi, address);
 
