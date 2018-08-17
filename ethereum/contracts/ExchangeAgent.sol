@@ -82,6 +82,19 @@ contract ExchangeAgent {
 		return participants.length;
 	}
 
+	function getSummary() external view returns(address[] _participants, 
+												uint256 _depositCount, 
+												uint256 _expirationTime, 
+												bool _withdrawable, 
+												bool _finalizable)
+	{
+		_participants = participants;
+		_depositCount = depositCount;
+		_expirationTime = expirationTime;
+		_withdrawable = withdrawable;
+		_finalizable = finalizable;
+	}
+
 	function _isParticipant(address _user) private view returns(bool) {
 		for(uint256 i = 0; i < participants.length; i++) {
 			if(participants[i] == _user) {
