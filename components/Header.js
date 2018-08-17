@@ -1,10 +1,27 @@
 import React from 'react';
+import { Menu } from 'semantic-ui-react';
+import Link from 'next/link';
 
 class Header extends React.Component {
 	
 	render() {
 		return (
-			<h1>This is the header</h1>
+			<Menu style={{marginTop: '10px'}}>
+				<Menu.Item name='browse'>
+
+		        </Menu.Item>
+
+		        <Menu.Item name='submit'>
+		        </Menu.Item>
+
+		        <Menu.Menu position='right'>
+					<Menu.Item name='open-trades'>
+						<Link href="">
+							My open trades
+						</Link>
+					</Menu.Item>
+		        </Menu.Menu>
+			</Menu>
 		);
 	}
 }

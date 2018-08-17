@@ -28,6 +28,12 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _semanticUiReact = require('semantic-ui-react');
+
+var _link = require('next/dist/lib/link.js');
+
+var _link2 = _interopRequireDefault(_link);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = '/Users/tomamajic/Desktop/Toma/Dev/otc-exchange/components/Header.js';
@@ -45,12 +51,31 @@ var Header = function (_React$Component) {
 	(0, _createClass3.default)(Header, [{
 		key: 'render',
 		value: function render() {
-			return _react2.default.createElement('h1', {
-				__source: {
+			return _react2.default.createElement(_semanticUiReact.Menu, { style: { marginTop: '10px' }, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 7
+					lineNumber: 9
 				}
-			}, 'This is the header');
+			}, _react2.default.createElement(_semanticUiReact.Menu.Item, { name: 'browse', __source: {
+					fileName: _jsxFileName,
+					lineNumber: 10
+				}
+			}), _react2.default.createElement(_semanticUiReact.Menu.Item, { name: 'submit', __source: {
+					fileName: _jsxFileName,
+					lineNumber: 14
+				}
+			}), _react2.default.createElement(_semanticUiReact.Menu.Menu, { position: 'right', __source: {
+					fileName: _jsxFileName,
+					lineNumber: 17
+				}
+			}, _react2.default.createElement(_semanticUiReact.Menu.Item, { name: 'open-trades', __source: {
+					fileName: _jsxFileName,
+					lineNumber: 18
+				}
+			}, _react2.default.createElement(_link2.default, { href: '', __source: {
+					fileName: _jsxFileName,
+					lineNumber: 19
+				}
+			}, 'My open trades'))));
 		}
 	}]);
 
@@ -58,4 +83,4 @@ var Header = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Header;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvSGVhZGVyLmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiSGVhZGVyIiwiQ29tcG9uZW50Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLEFBQU87Ozs7Ozs7OztJQUVELEE7Ozs7Ozs7Ozs7OzJCQUVJLEFBQ1I7MEJBQ0MsY0FBQTs7ZUFBQTtpQkFBQTtBQUFBO0FBQUEsSUFBQSxFQURELEFBQ0MsQUFFRDs7Ozs7RUFObUIsZ0JBQU0sQSxBQVMzQjs7a0JBQUEsQUFBZSIsImZpbGUiOiJIZWFkZXIuanMiLCJzb3VyY2VSb290IjoiL1VzZXJzL3RvbWFtYWppYy9EZXNrdG9wL1RvbWEvRGV2L290Yy1leGNoYW5nZSJ9
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvSGVhZGVyLmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiTWVudSIsIkxpbmsiLCJIZWFkZXIiLCJtYXJnaW5Ub3AiLCJDb21wb25lbnQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsQUFBTzs7OztBQUNQLEFBQVM7O0FBQ1QsQUFBTzs7Ozs7Ozs7O0lBRUQsQTs7Ozs7Ozs7Ozs7MkJBRUksQUFDUjswQkFDQyxBQUFDLHVDQUFLLE9BQU8sRUFBQyxXQUFkLEFBQWEsQUFBWTtlQUF6QjtpQkFBQSxBQUNDO0FBREQ7SUFBQSxnQ0FDQyxBQUFDLHNCQUFELEFBQU0sUUFBSyxNQUFYLEFBQWdCO2VBQWhCO2lCQURELEFBQ0MsQUFJTTtBQUpOO3FDQUlNLEFBQUMsc0JBQUQsQUFBTSxRQUFLLE1BQVgsQUFBZ0I7ZUFBaEI7aUJBTFAsQUFLTyxBQUdBO0FBSEE7dUJBR0MsY0FBRCxzQkFBQSxBQUFNLFFBQUssVUFBWCxBQUFvQjtlQUFwQjtpQkFBQSxBQUNMO0FBREs7c0JBQ0osY0FBRCxzQkFBQSxBQUFNLFFBQUssTUFBWCxBQUFnQjtlQUFoQjtpQkFBQSxBQUNDO0FBREQ7c0JBQ0MsQUFBQyxnQ0FBSyxNQUFOLEFBQVc7ZUFBWDtpQkFBQTtBQUFBO01BWEosQUFDQyxBQVFPLEFBQ0wsQUFDQyxBQU9KOzs7OztFQXJCbUIsZ0JBQU0sQSxBQXdCM0I7O2tCQUFBLEFBQWUiLCJmaWxlIjoiSGVhZGVyLmpzIiwic291cmNlUm9vdCI6Ii9Vc2Vycy90b21hbWFqaWMvRGVza3RvcC9Ub21hL0Rldi9vdGMtZXhjaGFuZ2UifQ==
