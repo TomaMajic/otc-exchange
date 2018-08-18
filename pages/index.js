@@ -27,7 +27,7 @@ class OTCIndex extends React.Component {
 
 	renderAgents() {
 		const items = this.props.agents.map((agent) => {
-			let link = <Link route=''><a>View Exchange</a></Link>
+			let link = <Link href={`/exchanges/${agent}`}><a>View Exchange</a></Link>;
 
 			return {
 				header: agent,
