@@ -23,7 +23,7 @@ class ExchangeShow extends React.Component {
 		const secondToken = await Token(secondTokenAddr);
 		// const firstTokenName = await firstToken.methods.name().call();
 		// const secondTokenName = await secondToken.methods.name().call();
-
+		// console.log(firstTokenName)
 		return { address, participants, depositCount, expirationTime, withdrawable, finalizable }
 	}
 
