@@ -12,26 +12,31 @@ class ExchangeShow extends React.Component {
 		const summary = await agent.methods.getSummary().call();
 		const participants = summary["_participants"];
 		const depositCount = summary["_depositCount"];
-		const expirationTime = summary["_expirationTime"];
+
+		const now = new Date();
+		const daysLeft = Math.floor((new Date(summary["_expirationTime"] * 1000) - now) / (1000*60*60*24));
+		const hoursLeft = Math.floor((((new Date(summary["_expirationTime"] * 1000) - now) / (1000*60*60*24)) - daysLeft) * 24);
+		const expirationDate = `${daysLeft} days & ${hoursLeft} hours`;
+
 		const withdrawable = summary["_withdrawable"];
 		const finalizable = summary["_finalizable"];
 
 		const firstTokenAddr = summary["_firstToken"];
 		const secondTokenAddr = summary["_secondToken"];
-		console.log(firstTokenAddr)
 		const firstToken = await Token(firstTokenAddr);
 		const secondToken = await Token(secondTokenAddr);
-		// const firstTokenName = await firstToken.methods.name().call();
-		// const secondTokenName = await secondToken.methods.name().call();
-		// console.log(firstTokenName)
-		return { address, participants, depositCount, expirationTime, withdrawable, finalizable }
+		const firstTokenName = await firstToken.methods.name().call();
+		const secondTokenName = await secondToken.methods.name().call();
+
+		return { address, participants, depositCount, expirationDate, withdrawable, finalizable, firstTokenName, secondTokenName }
 	}
 
 	render() {
 		return (
 			<Layout>
 				<h3>{this.props.address}</h3>
-				<p>{this.props.participants}</p>
+				<h4>Time to finalize: {this.props.expirationDate}</h4>
+				
 
 				<Button
 					primary

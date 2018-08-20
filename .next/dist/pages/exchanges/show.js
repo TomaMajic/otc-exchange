@@ -70,29 +70,29 @@ var ExchangeShow = function (_React$Component) {
 			return _react2.default.createElement(_Layout2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 32
+					lineNumber: 36
 				}
 			}, _react2.default.createElement('h3', {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 33
+					lineNumber: 37
 				}
-			}, this.props.address), _react2.default.createElement('p', {
+			}, this.props.address), _react2.default.createElement('h4', {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 34
+					lineNumber: 38
 				}
-			}, this.props.participants), _react2.default.createElement(_semanticUiReact.Button, {
+			}, 'Time to finalize: ', this.props.expirationDate), _react2.default.createElement(_semanticUiReact.Button, {
 				primary: true,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 36
+					lineNumber: 41
 				}
 			}, 'Finalize'), _react2.default.createElement(_semanticUiReact.Button, {
 				primary: true,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 41
+					lineNumber: 46
 				}
 			}, 'Withdraw'));
 		}
@@ -100,7 +100,7 @@ var ExchangeShow = function (_React$Component) {
 		key: 'getInitialProps',
 		value: function () {
 			var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(props) {
-				var address, agent, summary, participants, depositCount, expirationTime, withdrawable, finalizable, firstTokenAddr, secondTokenAddr, firstToken, secondToken;
+				var address, agent, summary, participants, depositCount, now, daysLeft, hoursLeft, expirationDate, withdrawable, finalizable, firstTokenAddr, secondTokenAddr, firstToken, secondToken, firstTokenName, secondTokenName;
 				return _regenerator2.default.wrap(function _callee$(_context) {
 					while (1) {
 						switch (_context.prev = _context.next) {
@@ -118,26 +118,37 @@ var ExchangeShow = function (_React$Component) {
 								summary = _context.sent;
 								participants = summary["_participants"];
 								depositCount = summary["_depositCount"];
-								expirationTime = summary["_expirationTime"];
+								now = new Date();
+								daysLeft = Math.floor((new Date(summary["_expirationTime"] * 1000) - now) / (1000 * 60 * 60 * 24));
+								hoursLeft = Math.floor(((new Date(summary["_expirationTime"] * 1000) - now) / (1000 * 60 * 60 * 24) - daysLeft) * 24);
+								expirationDate = daysLeft + ' days & ' + hoursLeft + ' hours';
 								withdrawable = summary["_withdrawable"];
 								finalizable = summary["_finalizable"];
 								firstTokenAddr = summary["_firstToken"];
 								secondTokenAddr = summary["_secondToken"];
-
-								console.log(firstTokenAddr);
-								_context.next = 17;
+								_context.next = 19;
 								return (0, _token2.default)(firstTokenAddr);
 
-							case 17:
+							case 19:
 								firstToken = _context.sent;
-								_context.next = 20;
+								_context.next = 22;
 								return (0, _token2.default)(secondTokenAddr);
 
-							case 20:
-								secondToken = _context.sent;
-								return _context.abrupt('return', { address: address, participants: participants, depositCount: depositCount, expirationTime: expirationTime, withdrawable: withdrawable, finalizable: finalizable });
-
 							case 22:
+								secondToken = _context.sent;
+								_context.next = 25;
+								return firstToken.methods.name().call();
+
+							case 25:
+								firstTokenName = _context.sent;
+								_context.next = 28;
+								return secondToken.methods.name().call();
+
+							case 28:
+								secondTokenName = _context.sent;
+								return _context.abrupt('return', { address: address, participants: participants, depositCount: depositCount, expirationDate: expirationDate, withdrawable: withdrawable, finalizable: finalizable, firstTokenName: firstTokenName, secondTokenName: secondTokenName });
+
+							case 30:
 							case 'end':
 								return _context.stop();
 						}
@@ -157,4 +168,4 @@ var ExchangeShow = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = ExchangeShow;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL2V4Y2hhbmdlcy9zaG93LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiTGF5b3V0IiwiQWdlbnQiLCJUb2tlbiIsIkJ1dHRvbiIsIkV4Y2hhbmdlU2hvdyIsInByb3BzIiwiYWRkcmVzcyIsInBhcnRpY2lwYW50cyIsInF1ZXJ5IiwiYWdlbnQiLCJtZXRob2RzIiwiZ2V0U3VtbWFyeSIsImNhbGwiLCJzdW1tYXJ5IiwiZGVwb3NpdENvdW50IiwiZXhwaXJhdGlvblRpbWUiLCJ3aXRoZHJhd2FibGUiLCJmaW5hbGl6YWJsZSIsImZpcnN0VG9rZW5BZGRyIiwic2Vjb25kVG9rZW5BZGRyIiwiY29uc29sZSIsImxvZyIsImZpcnN0VG9rZW4iLCJzZWNvbmRUb2tlbiIsIkNvbXBvbmVudCJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLEFBQU87Ozs7QUFDUCxBQUFPLEFBQVk7Ozs7QUFDbkIsQUFBTyxBQUFXOzs7O0FBQ2xCLEFBQU8sQUFBVzs7OztBQUNsQixBQUFTOzs7Ozs7O0ksQUFFSDs7Ozs7Ozs7Ozs7MkJBdUJJLEFBQ1I7MEJBQ0MsQUFBQzs7ZUFBRDtpQkFBQSxBQUNDO0FBREQ7QUFBQSxJQUFBLGtCQUNDLGNBQUE7O2VBQUE7aUJBQUEsQUFBSztBQUFMO0FBQUEsV0FBSyxBQUFLLE1BRFgsQUFDQyxBQUFnQixBQUNoQiwwQkFBQSxjQUFBOztlQUFBO2lCQUFBLEFBQUk7QUFBSjtBQUFBLFdBQUksQUFBSyxNQUZWLEFBRUMsQUFBZSxBQUVmLCtCQUFBLEFBQUM7YUFBRDs7ZUFBQTtpQkFBQTtBQUFBO0FBQ0MsTUFMRixBQUlDLEFBS0EsNkJBQUEsQUFBQzthQUFEOztlQUFBO2lCQUFBO0FBQUE7QUFDQyxNQVhILEFBQ0MsQUFTQyxBQU9GOzs7Ozt3RyxBQXZDNEI7Ozs7O1lBQ3RCO0Esa0JBQVUsTUFBQSxBQUFNLE0sQUFBTTs7ZUFDUixxQkFBQSxBLEFBQU07O1lBQXBCO0E7O2VBQ2dCLE1BQUEsQUFBTSxRQUFOLEFBQWMsYUFBZCxBQUEyQixBOztZQUEzQztBLDJCQUNBO0EsdUJBQWUsUUFBQSxBQUFRLEEsQUFDdkI7QSx1QkFBZSxRQUFBLEFBQVEsQUFDdkIsQTtBLHlCQUFpQixRQUFBLEFBQVEsQSxBQUN6QjtBLHVCQUFlLFFBQUEsQUFBUSxBLEFBQ3ZCO0Esc0JBQWMsUUFBQSxBQUFRLEEsQUFFdEI7QSx5QkFBaUIsUUFBQSxBQUNqQixBLEFBRHlCO0EsMEJBQ1AsUUFBQSxBQUFRLEEsQUFDaEM7O2dCQUFBLEFBQVEsSUFBUixBQUFZOztlQUNhLHFCQUFBLEFBQU0sQTs7WUFBekI7QTs7ZUFDb0IscUIsQUFBQSxBQUFNOztZQUExQjtBO3lDQUlDLEVBQUUsU0FBRixTQUFXLGNBQVgsY0FBeUIsY0FBekIsY0FBdUMsZ0JBQXZDLGdCQUF1RCxjQUF2RCxjQUFxRSxhQUFyRSxBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0VBcEJrQixnQkFBTSxBLEFBNENqQzs7a0JBQUEsQUFBZSIsImZpbGUiOiJzaG93LmpzP2VudHJ5Iiwic291cmNlUm9vdCI6Ii9Vc2Vycy90b21hbWFqaWMvRGVza3RvcC9Ub21hL0Rldi9vdGMtZXhjaGFuZ2UifQ==
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL2V4Y2hhbmdlcy9zaG93LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiTGF5b3V0IiwiQWdlbnQiLCJUb2tlbiIsIkJ1dHRvbiIsIkV4Y2hhbmdlU2hvdyIsInByb3BzIiwiYWRkcmVzcyIsImV4cGlyYXRpb25EYXRlIiwicXVlcnkiLCJhZ2VudCIsIm1ldGhvZHMiLCJnZXRTdW1tYXJ5IiwiY2FsbCIsInN1bW1hcnkiLCJwYXJ0aWNpcGFudHMiLCJkZXBvc2l0Q291bnQiLCJub3ciLCJEYXRlIiwiZGF5c0xlZnQiLCJNYXRoIiwiZmxvb3IiLCJob3Vyc0xlZnQiLCJ3aXRoZHJhd2FibGUiLCJmaW5hbGl6YWJsZSIsImZpcnN0VG9rZW5BZGRyIiwic2Vjb25kVG9rZW5BZGRyIiwiZmlyc3RUb2tlbiIsInNlY29uZFRva2VuIiwibmFtZSIsImZpcnN0VG9rZW5OYW1lIiwic2Vjb25kVG9rZW5OYW1lIiwiQ29tcG9uZW50Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsQUFBTzs7OztBQUNQLEFBQU8sQUFBWTs7OztBQUNuQixBQUFPLEFBQVc7Ozs7QUFDbEIsQUFBTyxBQUFXOzs7O0FBQ2xCLEFBQVM7Ozs7Ozs7SUFFSCxBOzs7Ozs7Ozs7OzsyQkEyQkksQUFDUjswQkFDQyxBQUFDOztlQUFEO2lCQUFBLEFBQ0M7QUFERDtBQUFBLElBQUEsa0JBQ0MsY0FBQTs7ZUFBQTtpQkFBQSxBQUFLO0FBQUw7QUFBQSxXQUFLLEFBQUssTUFEWCxBQUNDLEFBQWdCLEFBQ2hCLDBCQUFBLGNBQUE7O2VBQUE7aUJBQUE7QUFBQTtBQUFBLE1BQXVCLDJCQUFBLEFBQUssTUFGN0IsQUFFQyxBQUFrQyxBQUdsQyxpQ0FBQSxBQUFDO2FBQUQ7O2VBQUE7aUJBQUE7QUFBQTtBQUNDLE1BTkYsQUFLQyxBQUtBLDZCQUFBLEFBQUM7YUFBRDs7ZUFBQTtpQkFBQTtBQUFBO0FBQ0MsTUFaSCxBQUNDLEFBVUMsQUFPRjs7Ozs7d0dBNUM0QixBOzs7OztZQUN0QjtBLGtCQUFVLE1BQUEsQUFBTSxNQUFNLEE7O2VBQ1IscUJBQUEsQUFBTSxBOztZQUFwQjtBOztlQUNnQixNQUFBLEFBQU0sUUFBTixBQUFjLGFBQWEsQSxBQUEzQjs7WUFBaEI7QSwyQkFDQTtBLHVCQUFlLFFBQUEsQUFBUSxBLEFBQ3ZCO0EsdUJBQWUsUUFBUSxBLEFBQVIsQUFFZjtBLGNBQU0sSUFBQSxBLEFBQUksQUFDVjtBLG1CQUFXLEtBQUEsQUFBSyxNQUFNLENBQUMsSUFBQSxBQUFJLEtBQUssUUFBQSxBQUFRLHFCQUFqQixBQUFzQyxRQUF2QyxBQUErQyxRQUFRLE9BQUEsQUFBSyxLQUFMLEFBQVEsS0FBMUUsQUFBVyxBQUFrRSxBQUN4RixBO0Esb0JBQVksS0FBQSxBQUFLLE1BQU0sQ0FBRSxDQUFDLElBQUEsQUFBSSxLQUFLLFFBQUEsQUFBUSxxQkFBakIsQUFBc0MsUUFBdkMsQUFBK0MsUUFBUSxPQUFBLEFBQUssS0FBTCxBQUFRLEtBQWhFLEFBQUMsQUFBa0UsTUFBcEUsQUFBMkUsWSxBQUF0RixBQUFrRyxBQUM5RztBLHlCLEFBQW9CLHdCLEFBQW1CLFlBRXZDO0EsdUJBQWUsUUFBQSxBQUFRLEEsQUFDdkI7QSxzQkFBYyxRQUFBLEFBQVEsQUFFdEIsQTtBLHlCQUFpQixRQUFBLEFBQVEsQUFDekIsQTtBLDBCQUFrQixRQUFRLEEsQUFBUjs7ZUFDQyxxQixBQUFBLEFBQU07O1lBQXpCO0E7O2VBQ29CLHFCQUFBLEEsQUFBTTs7WUFBMUI7QTs7ZUFDdUIsV0FBQSxBQUFXLFFBQVgsQUFBbUIsT0FBbkIsQSxBQUEwQjs7WUFBakQ7QTs7ZUFDd0IsWUFBQSxBQUFZLFFBQVosQUFBb0IsT0FBcEIsQSxBQUEyQjs7WUFBbkQ7QTt5Q0FFQyxFQUFFLFNBQUYsU0FBVyxjQUFYLGNBQXlCLGNBQXpCLGNBQXVDLGdCQUF2QyxnQkFBdUQsY0FBdkQsY0FBcUUsYUFBckUsYUFBa0YsZ0JBQWxGLGdCQUFrRyxpQixBQUFsRzs7Ozs7Ozs7Ozs7Ozs7Ozs7OztFQXhCa0IsZ0JBQU0sQSxBQWlEakM7O2tCQUFBLEFBQWUiLCJmaWxlIjoic2hvdy5qcz9lbnRyeSIsInNvdXJjZVJvb3QiOiIvVXNlcnMvdG9tYW1hamljL0Rlc2t0b3AvVG9tYS9EZXYvb3RjLWV4Y2hhbmdlIn0=
