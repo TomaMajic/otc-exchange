@@ -82,13 +82,19 @@ contract ExchangeAgent {
 		return participants.length;
 	}
 
-	function getSummary() external view returns(address[] _participants, 
+	function getSummary() external view returns(address[] _participants,
+												address _firstToken,
+												address _secondToken, 
 												uint256 _depositCount, 
 												uint256 _expirationTime, 
 												bool _withdrawable, 
 												bool _finalizable)
-	{
+	{	
+		require(participants.length == 2);
+
 		_participants = participants;
+		_firstToken = participants[0];
+		_secondToken = participants[1];
 		_depositCount = depositCount;
 		_expirationTime = expirationTime;
 		_withdrawable = withdrawable;
