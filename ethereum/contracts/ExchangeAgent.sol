@@ -93,8 +93,8 @@ contract ExchangeAgent {
 		require(participants.length == 2);
 
 		_participants = participants;
-		_firstToken = participants[0];
-		_secondToken = participants[1];
+		_firstToken = participantToken[participants[0]];
+		_secondToken = participantToken[participants[1]];
 		_depositCount = depositCount;
 		_expirationTime = expirationTime;
 		_withdrawable = withdrawable;
