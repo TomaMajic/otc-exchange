@@ -44,6 +44,10 @@ var _agent = require('../../ethereum/agent');
 
 var _agent2 = _interopRequireDefault(_agent);
 
+var _token = require('../../ethereum/token');
+
+var _token2 = _interopRequireDefault(_token);
+
 var _semanticUiReact = require('semantic-ui-react');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -66,39 +70,29 @@ var ExchangeShow = function (_React$Component) {
 			return _react2.default.createElement(_Layout2.default, {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 23
+					lineNumber: 32
 				}
 			}, _react2.default.createElement('h3', {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 24
+					lineNumber: 33
 				}
 			}, this.props.address), _react2.default.createElement('p', {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 25
+					lineNumber: 34
 				}
-			}, this.props.participants), _react2.default.createElement('p', {
-				__source: {
-					fileName: _jsxFileName,
-					lineNumber: 26
-				}
-			}, this.props.depositCount), _react2.default.createElement('p', {
-				__source: {
-					fileName: _jsxFileName,
-					lineNumber: 27
-				}
-			}, this.props.expirationTime), _react2.default.createElement(_semanticUiReact.Button, {
+			}, this.props.participants), _react2.default.createElement(_semanticUiReact.Button, {
 				primary: true,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 29
+					lineNumber: 36
 				}
 			}, 'Finalize'), _react2.default.createElement(_semanticUiReact.Button, {
 				primary: true,
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 34
+					lineNumber: 41
 				}
 			}, 'Withdraw'));
 		}
@@ -106,7 +100,7 @@ var ExchangeShow = function (_React$Component) {
 		key: 'getInitialProps',
 		value: function () {
 			var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee(props) {
-				var address, agent, summary, participants, depositCount, expirationTime, withdrawable, finalizable;
+				var address, agent, summary, participants, depositCount, expirationTime, withdrawable, finalizable, firstTokenAddr, secondTokenAddr, firstToken, secondToken;
 				return _regenerator2.default.wrap(function _callee$(_context) {
 					while (1) {
 						switch (_context.prev = _context.next) {
@@ -127,9 +121,23 @@ var ExchangeShow = function (_React$Component) {
 								expirationTime = summary["_expirationTime"];
 								withdrawable = summary["_withdrawable"];
 								finalizable = summary["_finalizable"];
+								firstTokenAddr = summary["_firstToken"];
+								secondTokenAddr = summary["_secondToken"];
+
+								console.log(firstTokenAddr);
+								_context.next = 17;
+								return (0, _token2.default)(firstTokenAddr);
+
+							case 17:
+								firstToken = _context.sent;
+								_context.next = 20;
+								return (0, _token2.default)(secondTokenAddr);
+
+							case 20:
+								secondToken = _context.sent;
 								return _context.abrupt('return', { address: address, participants: participants, depositCount: depositCount, expirationTime: expirationTime, withdrawable: withdrawable, finalizable: finalizable });
 
-							case 13:
+							case 22:
 							case 'end':
 								return _context.stop();
 						}
@@ -149,4 +157,4 @@ var ExchangeShow = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = ExchangeShow;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL2V4Y2hhbmdlcy9zaG93LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiTGF5b3V0IiwiQWdlbnQiLCJCdXR0b24iLCJFeGNoYW5nZVNob3ciLCJwcm9wcyIsImFkZHJlc3MiLCJwYXJ0aWNpcGFudHMiLCJkZXBvc2l0Q291bnQiLCJleHBpcmF0aW9uVGltZSIsInF1ZXJ5IiwiYWdlbnQiLCJtZXRob2RzIiwiZ2V0U3VtbWFyeSIsImNhbGwiLCJzdW1tYXJ5Iiwid2l0aGRyYXdhYmxlIiwiZmluYWxpemFibGUiLCJDb21wb25lbnQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxBQUFPOzs7O0FBQ1AsQUFBTyxBQUFZOzs7O0FBQ25CLEFBQU8sQUFBVzs7OztBQUNsQixBQUFTOzs7Ozs7O0ksQUFFSDs7Ozs7Ozs7Ozs7MkJBZUksQUFDUjswQkFDQyxBQUFDOztlQUFEO2lCQUFBLEFBQ0M7QUFERDtBQUFBLElBQUEsa0JBQ0MsY0FBQTs7ZUFBQTtpQkFBQSxBQUFLO0FBQUw7QUFBQSxXQUFLLEFBQUssTUFEWCxBQUNDLEFBQWdCLEFBQ2hCLDBCQUFBLGNBQUE7O2VBQUE7aUJBQUEsQUFBSTtBQUFKO0FBQUEsV0FBSSxBQUFLLE1BRlYsQUFFQyxBQUFlLEFBQ2YsK0JBQUEsY0FBQTs7ZUFBQTtpQkFBQSxBQUFJO0FBQUo7QUFBQSxXQUFJLEFBQUssTUFIVixBQUdDLEFBQWUsQUFDZiwrQkFBQSxjQUFBOztlQUFBO2lCQUFBLEFBQUk7QUFBSjtBQUFBLFdBQUksQUFBSyxNQUpWLEFBSUMsQUFBZSxBQUVmLGlDQUFBLEFBQUM7YUFBRDs7ZUFBQTtpQkFBQTtBQUFBO0FBQ0MsTUFQRixBQU1DLEFBS0EsNkJBQUEsQUFBQzthQUFEOztlQUFBO2lCQUFBO0FBQUE7QUFDQyxNQWJILEFBQ0MsQUFXQyxBQU9GOzs7Ozt3R0FqQzRCLEE7Ozs7O1lBQ3RCO0Esa0JBQVUsTUFBQSxBQUFNLE0sQUFBTTs7ZUFDUixxQkFBQSxBQUFNLEE7O1lBQXBCO0E7O2VBQ2dCLE1BQUEsQUFBTSxRQUFOLEFBQWMsYUFBZCxBQUEyQixBOztZQUEzQztBLDJCQUNBO0EsdUJBQWUsUUFBQSxBLEFBQVEsQUFDdkI7QSx1QkFBZSxRQUFBLEFBQVEsQSxBQUN2QjtBLHlCQUFpQixRQUFBLEFBQVEsQUFDekIsQTtBLHVCQUFlLFFBQUEsQUFBUSxBLEFBQ3ZCO0Esc0JBQWMsUUFBQSxBLEFBQVE7eUNBRXJCLEVBQUUsU0FBRixTQUFXLGNBQVgsY0FBeUIsY0FBekIsY0FBdUMsZ0JBQXZDLGdCQUF1RCxjQUF2RCxjQUFxRSxhQUFyRSxBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0VBWmtCLGdCQUFNLEEsQUFzQ2pDOztrQkFBQSxBQUFlIiwiZmlsZSI6InNob3cuanM/ZW50cnkiLCJzb3VyY2VSb290IjoiL1VzZXJzL3RvbWFtYWppYy9EZXNrdG9wL1RvbWEvRGV2L290Yy1leGNoYW5nZSJ9
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL2V4Y2hhbmdlcy9zaG93LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiTGF5b3V0IiwiQWdlbnQiLCJUb2tlbiIsIkJ1dHRvbiIsIkV4Y2hhbmdlU2hvdyIsInByb3BzIiwiYWRkcmVzcyIsInBhcnRpY2lwYW50cyIsInF1ZXJ5IiwiYWdlbnQiLCJtZXRob2RzIiwiZ2V0U3VtbWFyeSIsImNhbGwiLCJzdW1tYXJ5IiwiZGVwb3NpdENvdW50IiwiZXhwaXJhdGlvblRpbWUiLCJ3aXRoZHJhd2FibGUiLCJmaW5hbGl6YWJsZSIsImZpcnN0VG9rZW5BZGRyIiwic2Vjb25kVG9rZW5BZGRyIiwiY29uc29sZSIsImxvZyIsImZpcnN0VG9rZW4iLCJzZWNvbmRUb2tlbiIsIkNvbXBvbmVudCJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLEFBQU87Ozs7QUFDUCxBQUFPLEFBQVk7Ozs7QUFDbkIsQUFBTyxBQUFXOzs7O0FBQ2xCLEFBQU8sQUFBVzs7OztBQUNsQixBQUFTOzs7Ozs7O0ksQUFFSDs7Ozs7Ozs7Ozs7MkJBdUJJLEFBQ1I7MEJBQ0MsQUFBQzs7ZUFBRDtpQkFBQSxBQUNDO0FBREQ7QUFBQSxJQUFBLGtCQUNDLGNBQUE7O2VBQUE7aUJBQUEsQUFBSztBQUFMO0FBQUEsV0FBSyxBQUFLLE1BRFgsQUFDQyxBQUFnQixBQUNoQiwwQkFBQSxjQUFBOztlQUFBO2lCQUFBLEFBQUk7QUFBSjtBQUFBLFdBQUksQUFBSyxNQUZWLEFBRUMsQUFBZSxBQUVmLCtCQUFBLEFBQUM7YUFBRDs7ZUFBQTtpQkFBQTtBQUFBO0FBQ0MsTUFMRixBQUlDLEFBS0EsNkJBQUEsQUFBQzthQUFEOztlQUFBO2lCQUFBO0FBQUE7QUFDQyxNQVhILEFBQ0MsQUFTQyxBQU9GOzs7Ozt3RyxBQXZDNEI7Ozs7O1lBQ3RCO0Esa0JBQVUsTUFBQSxBQUFNLE0sQUFBTTs7ZUFDUixxQkFBQSxBLEFBQU07O1lBQXBCO0E7O2VBQ2dCLE1BQUEsQUFBTSxRQUFOLEFBQWMsYUFBZCxBQUEyQixBOztZQUEzQztBLDJCQUNBO0EsdUJBQWUsUUFBQSxBQUFRLEEsQUFDdkI7QSx1QkFBZSxRQUFBLEFBQVEsQUFDdkIsQTtBLHlCQUFpQixRQUFBLEFBQVEsQSxBQUN6QjtBLHVCQUFlLFFBQUEsQUFBUSxBLEFBQ3ZCO0Esc0JBQWMsUUFBQSxBQUFRLEEsQUFFdEI7QSx5QkFBaUIsUUFBQSxBQUNqQixBLEFBRHlCO0EsMEJBQ1AsUUFBQSxBQUFRLEEsQUFDaEM7O2dCQUFBLEFBQVEsSUFBUixBQUFZOztlQUNhLHFCQUFBLEFBQU0sQTs7WUFBekI7QTs7ZUFDb0IscUIsQUFBQSxBQUFNOztZQUExQjtBO3lDQUlDLEVBQUUsU0FBRixTQUFXLGNBQVgsY0FBeUIsY0FBekIsY0FBdUMsZ0JBQXZDLGdCQUF1RCxjQUF2RCxjQUFxRSxhQUFyRSxBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0VBcEJrQixnQkFBTSxBLEFBNENqQzs7a0JBQUEsQUFBZSIsImZpbGUiOiJzaG93LmpzP2VudHJ5Iiwic291cmNlUm9vdCI6Ii9Vc2Vycy90b21hbWFqaWMvRGVza3RvcC9Ub21hL0Rldi9vdGMtZXhjaGFuZ2UifQ==

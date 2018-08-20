@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../components/Layout';
 import Agent from '../../ethereum/agent';
+import Token from '../../ethereum/token';
 import { Button } from 'semantic-ui-react';
 
 class ExchangeShow extends React.Component {
@@ -15,6 +16,14 @@ class ExchangeShow extends React.Component {
 		const withdrawable = summary["_withdrawable"];
 		const finalizable = summary["_finalizable"];
 
+		const firstTokenAddr = summary["_firstToken"];
+		const secondTokenAddr = summary["_secondToken"];
+		console.log(firstTokenAddr)
+		const firstToken = await Token(firstTokenAddr);
+		const secondToken = await Token(secondTokenAddr);
+		// const firstTokenName = await firstToken.methods.name().call();
+		// const secondTokenName = await secondToken.methods.name().call();
+
 		return { address, participants, depositCount, expirationTime, withdrawable, finalizable }
 	}
 
@@ -23,8 +32,6 @@ class ExchangeShow extends React.Component {
 			<Layout>
 				<h3>{this.props.address}</h3>
 				<p>{this.props.participants}</p>
-				<p>{this.props.depositCount}</p>
-				<p>{this.props.expirationTime}</p>
 
 				<Button
 					primary
