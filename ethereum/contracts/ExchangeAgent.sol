@@ -17,10 +17,13 @@ contract ExchangeAgent {
 	mapping(address => address) public participantToken;
 
 	constructor(address[] _participants,
+				address[] _tokens,
 				uint256 _timeToExpire) 
 	public {
 		expirationTime = now + _timeToExpire;
 		participants = _participants;
+		participantToken[_participants[0]] = _tokens[0];
+		participantToken[_participants[1]] = _tokens[1];
 		withdrawable = false;
 		finalizable = true;
 	}
@@ -28,10 +31,10 @@ contract ExchangeAgent {
 	function depositSuccessfull(uint256 _amount,
 								uint256 _previousSenderBalance, 
 								uint256 _previousContractBalance,
-								address _tokenAddress,
 								address _sender) 
 	external {
-		ERC20 token = ERC20(_tokenAddress);
+		address tokenAddress = participantToken[_sender];
+		ERC20 token = ERC20(tokenAddress);
 		uint256 senderBalance = token.balanceOf(_sender);
 		uint256 myBalance = token.balanceOf(address(this));
 
@@ -39,7 +42,6 @@ contract ExchangeAgent {
 		require(myBalance == _previousContractBalance.add(_amount));
 
 		balances[_sender] = balances[_sender].add(_amount);
-		participantToken[_sender] = _tokenAddress;
 		depositCount = depositCount.add(1);
 	}
 
