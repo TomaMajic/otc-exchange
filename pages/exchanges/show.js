@@ -4,12 +4,14 @@ import Agent from '../../ethereum/agent';
 import Token from '../../ethereum/token';
 import { Button, Card, Input, Form } from 'semantic-ui-react';
 import web3 from '../../ethereum/web3';
+import { Router } from '../../routes';
 
 class ExchangeShow extends React.Component {
 	state = {
 		value: '',
 		depositMade: false,
-		userTokenSymbol: ''
+		userTokenSymbol: '',
+		loading: false
 	}
 
 	static async getInitialProps(props) {
@@ -18,7 +20,7 @@ class ExchangeShow extends React.Component {
 		const summary = await agent.methods.getSummary().call();
 		const participants = summary["_participants"];
 		const depositCount = summary["_depositCount"];
-
+		console.log(summary)
 		const now = new Date();
 		const daysLeft = Math.floor((new Date(summary["_expirationTime"] * 1000) - now) / (1000*60*60*24));
 		const hoursLeft = Math.floor((((new Date(summary["_expirationTime"] * 1000) - now) / (1000*60*60*24)) - daysLeft) * 24);
@@ -59,7 +61,25 @@ class ExchangeShow extends React.Component {
 	onSubmit = async (event) => {
 		event.preventDefault();
 
-		
+		const participants = this.props.participants;
+		const accounts = await web3.eth.getAccounts();
+		const token = await Token(this.props.tokenAddresses[participants.indexOf(accounts[0])]);
+
+		this.setState({ loading: true });
+
+		try {
+			await token.methods
+				.transfer(this.props.address, this.state.value)
+				.send({
+					from: accounts[0]
+				});
+
+			Router.pushRoute(`/exchanges/${this.props.address}`);
+		} catch(err) {
+			console.log(err);
+		}
+
+		this.setState({ loading: false, value: '' });
 	}
 
 	renderParticipants() {
@@ -96,6 +116,7 @@ class ExchangeShow extends React.Component {
 						style={{marginTop: '5px', marginBottom: '15px'}}
 						primary={this.state.depositMade}
 						active={!this.state.depositMade}
+						loading={this.state.loading}
 					>
 						Deposit
 					</Button>
