@@ -63,7 +63,11 @@ class ExchangeShow extends React.Component {
 
 		const participants = this.props.participants;
 		const accounts = await web3.eth.getAccounts();
+		const agent = await Agent(this.props.address);
 		const token = await Token(this.props.tokenAddresses[participants.indexOf(accounts[0])]);
+
+		const senderBalance = await token.methods.balanceOf(accounts[0]);
+		const contractBalance = await token.methods.balanceOf(this.props.address);
 
 		this.setState({ loading: true });
 
@@ -73,6 +77,10 @@ class ExchangeShow extends React.Component {
 				.send({
 					from: accounts[0]
 				});
+
+			try {
+			
+			}
 
 			Router.pushRoute(`/exchanges/${this.props.address}`);
 		} catch(err) {
