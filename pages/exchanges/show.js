@@ -1,10 +1,12 @@
 import React from 'react';
+import { Button, Card, Input, Form } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import Agent from '../../ethereum/agent';
 import Token from '../../ethereum/token';
-import { Button, Card, Input, Form } from 'semantic-ui-react';
-import web3 from '../../ethereum/web3';
 import { Router } from '../../routes';
+import web3 from '../../ethereum/web3';
+import serverWeb3 from '../../ethereum/web3-server';
+
 
 class ExchangeShow extends React.Component {
 	state = {
@@ -44,8 +46,8 @@ class ExchangeShow extends React.Component {
 
 	async componentDidMount() {
 		const accounts = await web3.eth.getAccounts();
-		const agent = await Agent(this.props.address);
-		const token = await Token(this.props.tokenAddresses[this.props.participants.indexOf(accounts[0])]);
+		const agent = await Agent(this.props.address, 'client');
+		const token = await Token(this.props.tokenAddresses[this.props.participants.indexOf(accounts[0])], 'client');
 
 		const userTokenSymbol = await token.methods.symbol().call();
 		const balance = await agent.methods.balances(accounts[0]).call();
@@ -63,12 +65,13 @@ class ExchangeShow extends React.Component {
 
 		const participants = this.props.participants;
 		const accounts = await web3.eth.getAccounts();
-		const agent = await Agent(this.props.address);
-		const token = await Token(this.props.tokenAddresses[participants.indexOf(accounts[0])]);
+		const agent = await Agent(this.props.address, 'server');
+		const token = await Token(this.props.tokenAddresses[participants.indexOf(accounts[0])], 'client');
 
-		const senderBalance = await token.methods.balanceOf(accounts[0]);
-		const contractBalance = await token.methods.balanceOf(this.props.address);
-
+		const senderBalance = await token.methods.balanceOf(accounts[0]).call();
+		const contractBalance = await token.methods.balanceOf(this.props.address).call();
+		const serverAccounts = await serverWeb3.eth.getAccounts();
+	
 		this.setState({ loading: true });
 
 		try {
@@ -79,7 +82,16 @@ class ExchangeShow extends React.Component {
 				});
 
 			try {
-			
+				await agent.methods
+					.depositSuccessfull(this.state.value,
+										senderBalance,
+										contractBalance,
+										accounts[0])
+					.send({
+						from: serverAccounts[0]
+					});
+			} catch(err) {
+				console.log(err)
 			}
 
 			Router.pushRoute(`/exchanges/${this.props.address}`);
@@ -132,7 +144,7 @@ class ExchangeShow extends React.Component {
 				<hr/>
 
 				<div style={{marginTop: '24px'}}>{this.renderParticipants()}</div>
-				<p style={{marginTop: '10px'}}>Deposit count: {this.props.depositCount}</p>
+				<h4 style={{marginTop: '10px'}}>Deposit count: {this.props.depositCount}</h4>
 
 				<Button
 					primary={this.props.depositCount === 2}
