@@ -73,19 +73,24 @@ class ExchangeShow extends React.Component {
 		const senderBalance = await token.methods.balanceOf(accounts[0]).call();
 		const contractBalance = await token.methods.balanceOf(this.props.address).call();
 		const serverAccounts = await serverWeb3.eth.getAccounts();
-	
+
+		const decimals = await web3.utils.toBN(18);
+		const multiplier = await web3.utils.toBN(10).pow(decimals);
+		const amount = await web3.utils.toBN(this.state.value);
+		const value = amount * multiplier;
+
 		this.setState({ depositLoading: true });
 
 		try {
 			await token.methods
-				.transfer(this.props.address, this.state.value)
+				.transfer(this.props.address, value)
 				.send({
 					from: accounts[0]
 				});
 
 			try {
 				await agent.methods
-					.depositSuccessfull(this.state.value,
+					.depositSuccessfull(value,
 										senderBalance,
 										contractBalance,
 										accounts[0])
@@ -93,7 +98,7 @@ class ExchangeShow extends React.Component {
 						from: serverAccounts[0]
 					});
 			} catch(err) {
-				console.log(err)
+				console.log(err);
 			}
 
 			Router.pushRoute(`/exchanges/${this.props.address}`);
