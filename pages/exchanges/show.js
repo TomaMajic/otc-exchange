@@ -116,15 +116,15 @@ class ExchangeShow extends React.Component {
 		const accounts = await web3.eth.getAccounts();
 		const agent = await Agent(this.props.address, 'client');
 
-		this.setState({ finalizeLoading: true });
-
 		if(elementId === 'finalize') {
+			this.setState({ finalizeLoading: true });
 			this.finalize(accounts[0], agent);
+			this.setState({ withdrawLoading: false });
 		} else {
+			this.setState({ finalizeLoading: true });
 			this.withdraw(accounts[0], agent);
+			this.setState({ withdrawLoading: false });
 		}
-
-		this.setState({ finalizeLoading: false });
 	}
 
 	async finalize(account, agent) {
@@ -168,7 +168,7 @@ class ExchangeShow extends React.Component {
 	}
 
 	render() {
-
+		console.log(this.props.finalizable)
 		return (
 			<Layout>
 				<h3>{this.props.address}</h3>
@@ -203,7 +203,7 @@ class ExchangeShow extends React.Component {
 				<Button
 					id='finalize'
 					primary={this.props.depositCount === 2}
-					disabled={this.props.depositCount !== 2}
+					disabled={this.props.depositCount !== 2 || !this.props.finalizable}
 					onClick={this.handleClick}
 					loading={this.state.finalizeLoading}
 				>
