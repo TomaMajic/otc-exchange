@@ -21,8 +21,8 @@ class ExchangeShow extends React.Component {
 		const agent = await Agent(address);
 		const summary = await agent.methods.getSummary().call();
 		const participants = summary["_participants"];
-		const depositCount = summary["_depositCount"];
-		console.log(summary)
+		const depositCount = parseInt(summary["_depositCount"]);
+
 		const now = new Date();
 		const daysLeft = Math.floor((new Date(summary["_expirationTime"] * 1000) - now) / (1000*60*60*24));
 		const hoursLeft = Math.floor((((new Date(summary["_expirationTime"] * 1000) - now) / (1000*60*60*24)) - daysLeft) * 24);
@@ -52,7 +52,7 @@ class ExchangeShow extends React.Component {
 		const userTokenSymbol = await token.methods.symbol().call();
 		const balance = await agent.methods.balances(accounts[0]).call();
 		let depositMade = false;
-
+		
 		if(balance !== 0) {
 			depositMade = true;
 		}
@@ -102,6 +102,18 @@ class ExchangeShow extends React.Component {
 		this.setState({ loading: false, value: '' });
 	}
 
+	finalize = async (event) => {
+		event.preventDefault();
+
+		
+	} 
+
+	withdraw = async (event) => {
+		event.preventDefault();
+
+		console.log('Withdraw')
+	} 
+
 	renderParticipants() {
 		const items = this.props.participants.map((participant, index) => {
 			return {
@@ -115,13 +127,14 @@ class ExchangeShow extends React.Component {
 	}
 
 	render() {
+
 		return (
 			<Layout>
 				<h3>{this.props.address}</h3>
 				<h4>Time to finalize: {this.props.expirationDate}</h4>
 
 				<hr/>
-				<Form onSubmit={this.onSubmit}>
+				<Form onSubmit={() => this.state.depositMade ? null : this.onSubmit }>
 					<Form.Field style={{width: '20%'}}>
 						<label>Enter amount: </label>
 						<Input
@@ -134,8 +147,8 @@ class ExchangeShow extends React.Component {
 
 					<Button
 						style={{marginTop: '5px', marginBottom: '15px'}}
-						primary={this.state.depositMade}
-						active={!this.state.depositMade}
+						primary={!this.state.depositMade}
+						disabled={this.state.depositMade}
 						loading={this.state.loading}
 					>
 						Deposit
@@ -148,13 +161,15 @@ class ExchangeShow extends React.Component {
 
 				<Button
 					primary={this.props.depositCount === 2}
-					active={this.props.depositCount !== 2}
+					disabled={this.props.depositCount !== 2}
+					onClick={this.finalize}
 				>
 					Finalize
 				</Button>
 				<Button
 					primary={this.props.withdrawable}
-					active={!this.props.withdrawable}
+					disabled={!this.props.withdrawable}
+					onClick={this.withdraw}
 				>
 					Withdraw
 				</Button>
