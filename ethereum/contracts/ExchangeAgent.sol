@@ -33,6 +33,9 @@ contract ExchangeAgent {
 								uint256 _previousContractBalance,
 								address _sender) 
 	external {
+		require(balances[_sender] == 0);
+		require(depositCount < participants.length);
+
 		address tokenAddress = participantToken[_sender];
 		ERC20 token = ERC20(tokenAddress);
 		uint256 senderBalance = token.balanceOf(_sender);
