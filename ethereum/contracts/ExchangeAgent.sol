@@ -60,6 +60,7 @@ contract ExchangeAgent {
 		participantToken[participants[0]] = participantToken[participants[1]];
 		participantToken[participants[1]] = tokenAddress;
 
+		finalizable = false;
 		withdrawable = true;
 	}
 
