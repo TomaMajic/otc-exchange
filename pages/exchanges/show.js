@@ -13,7 +13,9 @@ class ExchangeShow extends React.Component {
 		value: '',
 		depositMade: false,
 		userTokenSymbol: '',
-		loading: false
+		depositLoading: false,
+		finalizeLoading: false,
+		withdrawLoading: false
 	}
 
 	static async getInitialProps(props) {
@@ -50,7 +52,7 @@ class ExchangeShow extends React.Component {
 		const token = await Token(this.props.tokenAddresses[this.props.participants.indexOf(accounts[0])], 'client');
 
 		const userTokenSymbol = await token.methods.symbol().call();
-		const balance = await agent.methods.balances(accounts[0]).call();
+		const balance = parseInt(await agent.methods.balances(accounts[0]).call());
 		let depositMade = false;
 		
 		if(balance !== 0) {
@@ -72,7 +74,7 @@ class ExchangeShow extends React.Component {
 		const contractBalance = await token.methods.balanceOf(this.props.address).call();
 		const serverAccounts = await serverWeb3.eth.getAccounts();
 	
-		this.setState({ loading: true });
+		this.setState({ depositLoading: true });
 
 		try {
 			await token.methods
@@ -99,20 +101,54 @@ class ExchangeShow extends React.Component {
 			console.log(err);
 		}
 
-		this.setState({ loading: false, value: '' });
+		this.setState({ depositLoading: false, value: '' });
 	}
 
-	finalize = async (event) => {
+	handleClick = async (event) => {
+		const elementId = event.target.id;
 		event.preventDefault();
 
-		
-	} 
+		const accounts = await web3.eth.getAccounts();
+		const agent = await Agent(this.props.address, 'client');
 
-	withdraw = async (event) => {
-		event.preventDefault();
+		this.setState({ finalizeLoading: true });
 
-		console.log('Withdraw')
-	} 
+		if(elementId === 'finalize') {
+			this.finalize(accounts[0], agent);
+		} else {
+			this.withdraw(accounts[0], agent);
+		}
+
+		this.setState({ finalizeLoading: false });
+	}
+
+	async finalize(account, agent) {
+		try {
+			await agent.methods
+				.finalizeExchange()
+				.send({
+					from: account
+				});
+
+			Router.pushRoute(`/exchanges/${this.props.address}`);
+		} catch(err) {
+			console.log(err);
+		}
+	}
+
+	async withdraw(account, agent) {
+		try {
+			await agent.methods
+				.withdraw()
+				.send({
+					from: account
+				});
+
+			Router.pushRoute(`/exchanges/${this.props.address}`);
+		} catch(err) {
+			console.log(err);
+		}
+	}
 
 	renderParticipants() {
 		const items = this.props.participants.map((participant, index) => {
@@ -134,7 +170,7 @@ class ExchangeShow extends React.Component {
 				<h4>Time to finalize: {this.props.expirationDate}</h4>
 
 				<hr/>
-				<Form onSubmit={() => this.state.depositMade ? null : this.onSubmit }>
+				<Form onSubmit={this.onSubmit}>
 					<Form.Field style={{width: '20%'}}>
 						<label>Enter amount: </label>
 						<Input
@@ -149,7 +185,7 @@ class ExchangeShow extends React.Component {
 						style={{marginTop: '5px', marginBottom: '15px'}}
 						primary={!this.state.depositMade}
 						disabled={this.state.depositMade}
-						loading={this.state.loading}
+						loading={this.state.depositLoading}
 					>
 						Deposit
 					</Button>
@@ -160,16 +196,20 @@ class ExchangeShow extends React.Component {
 				<h4 style={{marginTop: '10px'}}>Deposit count: {this.props.depositCount}</h4>
 
 				<Button
+					id='finalize'
 					primary={this.props.depositCount === 2}
 					disabled={this.props.depositCount !== 2}
-					onClick={this.finalize}
+					onClick={this.handleClick}
+					loading={this.state.finalizeLoading}
 				>
 					Finalize
 				</Button>
 				<Button
+					id='withdraw'
 					primary={this.props.withdrawable}
 					disabled={!this.props.withdrawable}
-					onClick={this.withdraw}
+					onClick={this.handleClick}
+					loading={this.state.withdrawLoading}
 				>
 					Withdraw
 				</Button>
