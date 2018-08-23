@@ -23,7 +23,6 @@ class ExchangeShow extends React.Component {
 		const agent = await Agent(address);
 		const summary = await agent.methods.getSummary().call();
 		const participants = summary["_participants"];
-		const depositCount = parseInt(summary["_depositCount"]);
 
 		const now = new Date();
 		const daysLeft = Math.floor((new Date(summary["_expirationTime"] * 1000) - now) / (1000*60*60*24));
@@ -32,6 +31,7 @@ class ExchangeShow extends React.Component {
 
 		const withdrawable = summary["_withdrawable"];
 		const finalizable = summary["_finalizable"];
+		const amountLeftToDeposit = summary["_amountsLeft"];
 
 		const firstTokenAddr = summary["_firstToken"];
 		const secondTokenAddr = summary["_secondToken"];
@@ -43,7 +43,7 @@ class ExchangeShow extends React.Component {
 		const secondTokenName = await secondToken.methods.name().call();
 		const tokens = [firstTokenName, secondTokenName];
 
-		return { address, participants, depositCount, expirationDate, withdrawable, finalizable, tokens, tokenAddresses }
+		return { address, participants, expirationDate, withdrawable, finalizable, tokens, tokenAddresses, amountLeftToDeposit }
 	}
 
 	async componentDidMount() {
@@ -52,14 +52,13 @@ class ExchangeShow extends React.Component {
 		const token = await Token(this.props.tokenAddresses[this.props.participants.indexOf(accounts[0])], 'client');
 
 		const userTokenSymbol = await token.methods.symbol().call();
-		const balance = parseInt(await agent.methods.balances(accounts[0]).call());
 		let depositMade = false;
-		
-		if(balance !== 0) {
+
+		if(parseInt(this.props.amountLeftToDeposit[accounts[0]]) === 0) {
 			depositMade = true;
 		}
 
-		this.setState({ depositMade, userTokenSymbol })
+		this.setState({ depositMade, userTokenSymbol });
 	}
 
 	onSubmit = async (event) => {
@@ -95,7 +94,9 @@ class ExchangeShow extends React.Component {
 										contractBalance,
 										accounts[0])
 					.send({
-						from: serverAccounts[0]
+						from: serverAccounts[0],
+						gas: 4600000,
+						gasPrice: 22000000000
 					});
 			} catch(err) {
 				console.log(err);
@@ -158,8 +159,9 @@ class ExchangeShow extends React.Component {
 	renderParticipants() {
 		const items = this.props.participants.map((participant, index) => {
 			return {
-				header: participant,
+				header: `User address: ${participant}`,
 				meta: this.props.tokens[index],
+				description: <h5>Amount left to deposit: {this.props.amountLeftToDeposit[index]}</h5>,
 				fluid: true
 			}
 		});
@@ -168,7 +170,6 @@ class ExchangeShow extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.finalizable)
 		return (
 			<Layout>
 				<h3>{this.props.address}</h3>
@@ -198,26 +199,27 @@ class ExchangeShow extends React.Component {
 				<hr/>
 
 				<div style={{marginTop: '24px'}}>{this.renderParticipants()}</div>
-				<h4 style={{marginTop: '10px'}}>Deposit count: {this.props.depositCount}</h4>
 
-				<Button
-					id='finalize'
-					primary={this.props.depositCount === 2}
-					disabled={this.props.depositCount !== 2 || !this.props.finalizable}
-					onClick={this.handleClick}
-					loading={this.state.finalizeLoading}
-				>
-					Finalize
-				</Button>
-				<Button
-					id='withdraw'
-					primary={this.props.withdrawable}
-					disabled={!this.props.withdrawable}
-					onClick={this.handleClick}
-					loading={this.state.withdrawLoading}
-				>
-					Withdraw
-				</Button>
+				<div style={{marginTop: '24px'}}>
+					<Button
+						id='finalize'
+						primary={this.props.finalizable}
+						disabled={!this.props.finalizable}
+						onClick={this.handleClick}
+						loading={this.state.finalizeLoading}
+					>
+						Finalize
+					</Button>
+					<Button
+						id='withdraw'
+						primary={this.props.withdrawable}
+						disabled={!this.props.withdrawable}
+						onClick={this.handleClick}
+						loading={this.state.withdrawLoading}
+					>
+						Withdraw
+					</Button>
+				</div>
 			</Layout>
 		)
 	}
