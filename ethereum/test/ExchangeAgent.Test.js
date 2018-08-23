@@ -17,25 +17,24 @@ contract('ExchangeAgent', async (accounts) => {
 		factory = await AgentFactory.new();
 		firstToken = await FirstToken.new();
 		secondToken = await SecondToken.new({from: accounts[1]});
+		tokens = [firstToken.address, secondToken.address];
+		amounts = [10**6, 10**6];
 
-		await factory.createExchangeAgent(participants, timeToExpire);
+		await factory.createExchangeAgent(participants, tokens, amounts, timeToExpire);
 		agentAddress = (await factory.getExchangeAgents()).valueOf()[0];
 		agent = await web3.eth.contract(AgentJSON.abi).at(agentAddress);
 	});
 
-	// it('should mark deposit as successfull', async () => {
-	// 	let expected = 1;
-	// 	let amount = 10**6;
-	// 	let senderBalance = (await firstToken.balanceOf(accounts[0])).valueOf();
-	// 	let contractBalance = (await firstToken.balanceOf(agentAddress)).valueOf();
+	it('should mark deposit as successfull', async () => {
+		let expected = 10**6 - 10**4;
+		let amount = 10**4;
+		let senderBalance = (await firstToken.balanceOf(accounts[0])).valueOf();
+		let contractBalance = (await firstToken.balanceOf(agentAddress)).valueOf();
 
-	// 	await firstToken.transfer(agentAddress, amount);
-	// 	await agent.depositSuccessfull(amount, senderBalance, contractBalance, firstToken.address, accounts[0]);
+		await firstToken.transfer(agentAddress, amount);
+		await agent.depositSuccessfull(amount, senderBalance, contractBalance, accounts[0], {from: accounts[0]});
+		let depositLeft = await agent.amountLeftToDeposit(accounts[0]);
 
-	// 	let depositCount = await agent.depositCount();
-
-	// 	assert.equal(depositCount.valueOf(), expected);
-	// });
-
-
+		assert.equal(depositLeft.valueOf(), expected);
+	});
 });
