@@ -7,25 +7,28 @@ contract ExchangeAgent {
 	using SafeMath for uint256;
 
 	uint256 public expirationTime;
-	uint256 public depositCount;
 	bool public withdrawable;
 	bool public finalizable;
 
 	address[] participants;
 
+	mapping(address => uint256) public amountLeftToDeposit;
 	mapping(address => uint256) public balances;
 	mapping(address => address) public participantToken;
 
 	constructor(address[] _participants,
 				address[] _tokens,
+				uint256[] _promisedDeposits,
 				uint256 _timeToExpire) 
 	public {
 		expirationTime = now + _timeToExpire;
 		participants = _participants;
 		participantToken[_participants[0]] = _tokens[0];
 		participantToken[_participants[1]] = _tokens[1];
+		amountLeftToDeposit[_participants[0]] = _promisedDeposits[0];
+		amountLeftToDeposit[_participants[1]] = _promisedDeposits[1];
 		withdrawable = false;
-		finalizable = true;
+		finalizable = false;
 	}
 
 	function depositSuccessfull(uint256 _amount,
@@ -33,8 +36,8 @@ contract ExchangeAgent {
 								uint256 _previousContractBalance,
 								address _sender) 
 	external {
-		require(balances[_sender] == 0);
-		require(depositCount < participants.length);
+		require(amountLeftToDeposit[_sender] > 0);
+		require(amountLeftToDeposit[_sender].sub(_amount) >= 0);
 
 		address tokenAddress = participantToken[_sender];
 		ERC20 token = ERC20(tokenAddress);
@@ -45,11 +48,16 @@ contract ExchangeAgent {
 		require(myBalance == _previousContractBalance.add(_amount));
 
 		balances[_sender] = balances[_sender].add(_amount);
-		depositCount = depositCount.add(1);
+		amountLeftToDeposit[_sender] = amountLeftToDeposit[_sender].sub(_amount);
+
+		if(_depositsMade()) {
+			finalizable = true;
+		}
 	}
 
 	function finalizeExchange() external onlyParticipants {
-		require(depositCount == participants.length);
+		require(amountLeftToDeposit[participants[0]] == 0);
+		require(amountLeftToDeposit[participants[1]] == 0);
 		require(finalizable);
 
 		uint256 balance = balances[participants[0]];
@@ -65,7 +73,8 @@ contract ExchangeAgent {
 	}
 
 	function fraudPreventiveFinalize() external {
-		require(expirationTime > now && depositCount != participants.length);
+		require(expirationTime > now);
+		require(amountLeftToDeposit[msg.sender] == 0);
 
 		finalizable = false;
 		withdrawable = true;
@@ -84,27 +93,31 @@ contract ExchangeAgent {
 		return participants;
 	}
 
-	function getParticipantsCount() external view returns(uint256) {
-		return participants.length;
-	}
-
 	function getSummary() external view returns(address[] _participants,
 												address _firstToken,
-												address _secondToken, 
-												uint256 _depositCount, 
-												uint256 _expirationTime, 
+												address _secondToken,
+												uint256[] _amountsLeft,
+												uint256 _expirationTime,
 												bool _withdrawable, 
 												bool _finalizable)
 	{	
 		require(participants.length == 2);
 
+		uint256[] memory amountsLeft = new uint256[](participants.length);
+		amountsLeft[0] = amountLeftToDeposit[participants[0]];
+		amountsLeft[1] = amountLeftToDeposit[participants[1]];   
+
 		_participants = participants;
 		_firstToken = participantToken[participants[0]];
 		_secondToken = participantToken[participants[1]];
-		_depositCount = depositCount;
+		_amountsLeft = amountsLeft;
 		_expirationTime = expirationTime;
 		_withdrawable = withdrawable;
 		_finalizable = finalizable;
+	}
+
+	function _depositsMade() private view returns(bool) {
+		return ((amountLeftToDeposit[participants[0]] == 0) && (amountLeftToDeposit[participants[1]] == 0));
 	}
 
 	function _isParticipant(address _user) private view returns(bool) {
