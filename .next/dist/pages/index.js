@@ -116,7 +116,7 @@ var OTCIndex = function (_React$Component) {
 					fileName: _jsxFileName,
 					lineNumber: 47
 				}
-			}, _react2.default.createElement(_link2.default, { href: '/exchanges/create', __source: {
+			}, _react2.default.createElement(_link2.default, { href: '/exchanges/new', __source: {
 					fileName: _jsxFileName,
 					lineNumber: 48
 				}

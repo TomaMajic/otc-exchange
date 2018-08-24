@@ -8,7 +8,9 @@ class Header extends React.Component {
 		return (
 			<Menu style={{marginTop: '10px'}}>
 				<Menu.Item name='OTCX'>
-
+					<Link href="/">
+						<a style={{color: '#000'}}><h5>OTCX</h5></a>
+					</Link>
 		        </Menu.Item>
 		        <Menu.Menu position='right'>
 					<Menu.Item name='open-trades'>

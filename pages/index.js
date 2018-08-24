@@ -45,7 +45,7 @@ class OTCIndex extends React.Component {
 		return (
 			<Layout>
 				<div>
-					<Link href='/exchanges/create'>
+					<Link href='/exchanges/new'>
 						<Button
 							style={{marginTop: '12px'}}
 							primary
