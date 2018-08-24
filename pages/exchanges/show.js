@@ -72,7 +72,8 @@ class ExchangeShow extends React.Component {
 		const senderBalance = await token.methods.balanceOf(accounts[0]).call();
 		const contractBalance = await token.methods.balanceOf(this.props.address).call();
 		const serverAccounts = await serverWeb3.eth.getAccounts();
-
+		console.log(contractBalance);
+		console.log(senderBalance);
 		const decimals = await web3.utils.toBN(18);
 		const multiplier = await web3.utils.toBN(10).pow(decimals);
 		const amount = await web3.utils.toBN(this.state.value);
@@ -80,32 +81,32 @@ class ExchangeShow extends React.Component {
 
 		this.setState({ depositLoading: true });
 
-		try {
-			await token.methods
-				.transfer(this.props.address, value)
-				.send({
-					from: accounts[0]
-				});
+		// try {
+		// 	await token.methods
+		// 		.transfer(this.props.address, value)
+		// 		.send({
+		// 			from: accounts[0]
+		// 		});
 
-			try {
-				await agent.methods
-					.depositSuccessfull(value,
-										senderBalance,
-										contractBalance,
-										accounts[0])
-					.send({
-						from: serverAccounts[0],
-						gas: 4600000,
-						gasPrice: 22000000000
-					});
-			} catch(err) {
-				console.log(err);
-			}
+		// 	try {
+		// 		await agent.methods
+		// 			.depositSuccessfull(value,
+		// 								senderBalance,
+		// 								contractBalance,
+		// 								accounts[0])
+		// 			.send({
+		// 				from: serverAccounts[0],
+		// 				gas: 4600000,
+		// 				gasPrice: 22000000000
+		// 			});
+		// 	} catch(err) {
+		// 		console.log(err);
+		// 	}
 
-			Router.pushRoute(`/exchanges/${this.props.address}`);
-		} catch(err) {
-			console.log(err);
-		}
+		// 	Router.pushRoute(`/exchanges/${this.props.address}`);
+		// } catch(err) {
+		// 	console.log(err);
+		// }
 
 		this.setState({ depositLoading: false, value: '' });
 	}
