@@ -55,30 +55,26 @@ var Header = function (_React$Component) {
 					fileName: _jsxFileName,
 					lineNumber: 9
 				}
-			}, _react2.default.createElement(_semanticUiReact.Menu.Item, { name: 'browse', __source: {
+			}, _react2.default.createElement(_semanticUiReact.Menu.Item, { name: 'OTCX', __source: {
 					fileName: _jsxFileName,
 					lineNumber: 10
 				}
-			}), _react2.default.createElement(_semanticUiReact.Menu.Item, { name: 'submit', __source: {
-					fileName: _jsxFileName,
-					lineNumber: 14
-				}
 			}), _react2.default.createElement(_semanticUiReact.Menu.Menu, { position: 'right', __source: {
 					fileName: _jsxFileName,
-					lineNumber: 17
+					lineNumber: 13
 				}
 			}, _react2.default.createElement(_semanticUiReact.Menu.Item, { name: 'open-trades', __source: {
 					fileName: _jsxFileName,
-					lineNumber: 18
+					lineNumber: 14
 				}
 			}, _react2.default.createElement(_link2.default, { href: '', __source: {
 					fileName: _jsxFileName,
-					lineNumber: 19
+					lineNumber: 15
 				}
 			}, _react2.default.createElement('a', {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 20
+					lineNumber: 16
 				}
 			}, 'My open trades')))));
 		}
@@ -88,4 +84,4 @@ var Header = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Header;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvSGVhZGVyLmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiTWVudSIsIkxpbmsiLCJIZWFkZXIiLCJtYXJnaW5Ub3AiLCJDb21wb25lbnQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsQUFBTzs7OztBQUNQLEFBQVM7O0FBQ1QsQUFBTzs7Ozs7Ozs7O0ksQUFFRDs7Ozs7Ozs7Ozs7MkJBRUksQUFDUjswQkFDQyxBQUFDLHVDQUFLLE9BQU8sRUFBQyxXQUFkLEFBQWEsQUFBWTtlQUF6QjtpQkFBQSxBQUNDO0FBREQ7SUFBQSxnQ0FDQyxBQUFDLHNCQUFELEFBQU0sUUFBSyxNQUFYLEFBQWdCO2VBQWhCO2lCQURELEFBQ0MsQUFJTTtBQUpOO3FDQUlNLEFBQUMsc0JBQUQsQUFBTSxRQUFLLE1BQVgsQUFBZ0I7ZUFBaEI7aUJBTFAsQUFLTyxBQUdBO0FBSEE7dUJBR0MsY0FBRCxzQkFBQSxBQUFNLFFBQUssVUFBWCxBQUFvQjtlQUFwQjtpQkFBQSxBQUNMO0FBREs7c0JBQ0osY0FBRCxzQkFBQSxBQUFNLFFBQUssTUFBWCxBQUFnQjtlQUFoQjtpQkFBQSxBQUNDO0FBREQ7c0JBQ0MsQUFBQyxnQ0FBSyxNQUFOLEFBQVc7ZUFBWDtpQkFBQSxBQUNDO0FBREQ7c0JBQ0MsY0FBQTs7ZUFBQTtpQkFBQTtBQUFBO0FBQUEsTUFaTCxBQUNDLEFBUU8sQUFDTCxBQUNDLEFBQ0MsQUFNTDs7Ozs7RUFyQm1CLGdCQUFNLEEsQUF3QjNCOztrQkFBQSxBQUFlIiwiZmlsZSI6IkhlYWRlci5qcyIsInNvdXJjZVJvb3QiOiIvVXNlcnMvdG9tYW1hamljL0Rlc2t0b3AvVG9tYS9EZXYvb3RjLWV4Y2hhbmdlIn0=
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvSGVhZGVyLmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiTWVudSIsIkxpbmsiLCJIZWFkZXIiLCJtYXJnaW5Ub3AiLCJDb21wb25lbnQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsQUFBTzs7OztBQUNQLEFBQVM7O0FBQ1QsQUFBTzs7Ozs7Ozs7O0lBRUQsQTs7Ozs7Ozs7Ozs7MkJBRUksQUFDUjswQkFDQyxBQUFDLHVDQUFLLE9BQU8sRUFBQyxXQUFkLEFBQWEsQUFBWTtlQUF6QjtpQkFBQSxBQUNDO0FBREQ7SUFBQSxnQ0FDQyxBQUFDLHNCQUFELEFBQU0sUUFBSyxNQUFYLEFBQWdCO2VBQWhCO2lCQURELEFBQ0MsQUFHTTtBQUhOO3VCQUdPLGNBQUQsc0JBQUEsQUFBTSxRQUFLLFVBQVgsQUFBb0I7ZUFBcEI7aUJBQUEsQUFDTDtBQURLO3NCQUNKLGNBQUQsc0JBQUEsQUFBTSxRQUFLLE1BQVgsQUFBZ0I7ZUFBaEI7aUJBQUEsQUFDQztBQUREO3NCQUNDLEFBQUMsZ0NBQUssTUFBTixBQUFXO2VBQVg7aUJBQUEsQUFDQztBQUREO3NCQUNDLGNBQUE7O2VBQUE7aUJBQUE7QUFBQTtBQUFBLE1BUkwsQUFDQyxBQUlPLEFBQ0wsQUFDQyxBQUNDLEFBTUw7Ozs7O0VBakJtQixnQkFBTSxBLEFBb0IzQjs7a0JBQUEsQUFBZSIsImZpbGUiOiJIZWFkZXIuanMiLCJzb3VyY2VSb290IjoiL1VzZXJzL3RvbWFtYWppYy9EZXNrdG9wL1RvbWEvRGV2L290Yy1leGNoYW5nZSJ9

@@ -7,13 +7,9 @@ class Header extends React.Component {
 	render() {
 		return (
 			<Menu style={{marginTop: '10px'}}>
-				<Menu.Item name='browse'>
+				<Menu.Item name='OTCX'>
 
 		        </Menu.Item>
-
-		        <Menu.Item name='submit'>
-		        </Menu.Item>
-
 		        <Menu.Menu position='right'>
 					<Menu.Item name='open-trades'>
 						<Link href="">

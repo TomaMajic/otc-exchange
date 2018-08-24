@@ -4,7 +4,7 @@ import factory from '../ethereum/factory';
 import Agent from '../ethereum/agent';
 import web3 from '../ethereum/web3';
 import Link from 'next/link';
-import { Card } from 'semantic-ui-react';
+import { Card, Button } from 'semantic-ui-react';
 
 class OTCIndex extends React.Component {
 
@@ -45,6 +45,17 @@ class OTCIndex extends React.Component {
 		return (
 			<Layout>
 				<div>
+					<Link href='/exchanges/create'>
+						<Button
+							style={{marginTop: '12px'}}
+							primary
+							floated='right'
+							content='Create Exchange' 
+							icon='add' 
+							labelPosition='right'
+						/>
+					</Link>
+
 					{ this.renderAgents() }
 				</div>
 			</Layout>
