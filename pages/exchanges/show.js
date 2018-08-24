@@ -32,7 +32,7 @@ class ExchangeShow extends React.Component {
 		const withdrawable = summary["_withdrawable"];
 		const finalizable = summary["_finalizable"];
 		const amountLeftToDeposit = summary["_amountsLeft"];
-		console.log(amountLeftToDeposit)
+
 		const firstTokenAddr = summary["_firstToken"];
 		const secondTokenAddr = summary["_secondToken"];
 		const tokenAddresses = [firstTokenAddr, secondTokenAddr];
@@ -48,9 +48,10 @@ class ExchangeShow extends React.Component {
 
 	async componentDidMount() {
 		const accounts = await web3.eth.getAccounts();
+		console.log(accounts[0])
 		const agent = await Agent(this.props.address, 'client');
 		const token = await Token(this.props.tokenAddresses[this.props.participants.indexOf(accounts[0])], 'client');
-
+		console.log(this.props.tokenAddresses[this.props.participants.indexOf(accounts[0])])
 		const userTokenSymbol = await token.methods.symbol().call();
 		let depositMade = false;
 
@@ -72,9 +73,7 @@ class ExchangeShow extends React.Component {
 		const senderBalance = await token.methods.balanceOf(accounts[0]).call();
 		const contractBalance = await token.methods.balanceOf(this.props.address).call();
 		const serverAccounts = await serverWeb3.eth.getAccounts();
-		const value = this.state.value;
-
-		console.log(value)
+		const value = await this.formatValue(this.state.value);
 
 		this.setState({ depositLoading: true });
 
@@ -116,17 +115,15 @@ class ExchangeShow extends React.Component {
 		const agent = await Agent(this.props.address, 'client');
 
 		if(elementId === 'finalize') {
-			this.setState({ finalizeLoading: true });
 			this.finalize(accounts[0], agent);
-			this.setState({ finalizeLoading: false });
 		} else {
-			this.setState({ withdrawLoading: true });
 			this.withdraw(accounts[0], agent);
-			this.setState({ withdrawLoading: false });
 		}
 	}
 
 	async finalize(account, agent) {
+		this.setState({ finalizeLoading: true });
+
 		try {
 			await agent.methods
 				.finalizeExchange()
@@ -138,9 +135,13 @@ class ExchangeShow extends React.Component {
 		} catch(err) {
 			console.log(err);
 		}
+
+		this.setState({ finalizeLoading: false });
 	}
 
 	async withdraw(account, agent) {
+		this.setState({ withdrawLoading: true });
+
 		try {
 			await agent.methods
 				.withdraw()
@@ -152,6 +153,8 @@ class ExchangeShow extends React.Component {
 		} catch(err) {
 			console.log(err);
 		}
+
+		this.setState({ withdrawLoading: false });
 	}
 
 	renderParticipants() {
@@ -159,7 +162,7 @@ class ExchangeShow extends React.Component {
 			return {
 				header: `User address: ${participant}`,
 				meta: this.props.tokens[index],
-				description: <h5>Amount left to deposit: {this.props.amountLeftToDeposit[index]}</h5>,
+				description: <h5>Amount left to deposit: {(this.props.amountLeftToDeposit[index])/(10**18)}</h5>,
 				fluid: true
 			}
 		});

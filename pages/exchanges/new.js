@@ -27,7 +27,7 @@ class ExchangesNew extends React.Component {
 		const secondUserDep = await this.formatValue(this.state.secondUserDeposit);
 		const plannedDeposits = [firstUserDep, secondUserDep];
 		const duration = this.state.duration * 24 * 60 * 60;
-		
+
 		this.setState({ loading: true });
 
 		try {
@@ -60,7 +60,7 @@ class ExchangesNew extends React.Component {
 		return (
 			<Layout>
 				<h3>Create a new exchange</h3>
-
+				
 				<Form onSubmit={this.onSubmit}>
 					<Form.Field style={{width: '35%'}}>
 						<label>Participants:</label>

@@ -10,22 +10,9 @@ class OTCIndex extends React.Component {
 
 	static async getInitialProps() {
 		const agents = await factory.methods.getExchangeAgents().call();
-		// const accounts = await web3.eth.getAccounts();
-		// console.log(accounts)
-
-		// const filteredAgents = await agents.map(async (address) => {
-		// 	let agent = await Agent(address);
-		// 	let participants = await agent.methods.getParticipants().call();
-
-		// 	if(participants.indexOf(accounts[0]) > -1) {
-		// 		return address;
-		// 	}
-		// });
 
 		return { agents }
 	}
-
-	// ONCLICK MY...DOHVATI AGENTE ZA MY I this.setState({agents})
 
 	renderAgents() {
 		const items = this.props.agents.map((agent) => {

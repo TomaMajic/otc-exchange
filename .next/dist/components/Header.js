@@ -34,6 +34,10 @@ var _link = require('next/dist/lib/link.js');
 
 var _link2 = _interopRequireDefault(_link);
 
+var _index = require('../pages/index');
+
+var _index2 = _interopRequireDefault(_index);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = '/Users/tomamajic/Desktop/Toma/Dev/otc-exchange/components/Header.js';
@@ -53,43 +57,43 @@ var Header = function (_React$Component) {
 		value: function render() {
 			return _react2.default.createElement(_semanticUiReact.Menu, { style: { marginTop: '10px' }, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 9
+					lineNumber: 10
 				}
 			}, _react2.default.createElement(_semanticUiReact.Menu.Item, { name: 'OTCX', __source: {
 					fileName: _jsxFileName,
-					lineNumber: 10
+					lineNumber: 11
 				}
 			}, _react2.default.createElement(_link2.default, { href: '/', __source: {
 					fileName: _jsxFileName,
-					lineNumber: 11
+					lineNumber: 12
 				}
 			}, _react2.default.createElement('a', { style: { color: '#000' }, __source: {
 					fileName: _jsxFileName,
-					lineNumber: 12
+					lineNumber: 13
 				}
 			}, _react2.default.createElement('h5', {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 12
+					lineNumber: 13
 				}
 			}, 'OTCX')))), _react2.default.createElement(_semanticUiReact.Menu.Menu, { position: 'right', __source: {
 					fileName: _jsxFileName,
-					lineNumber: 15
-				}
-			}, _react2.default.createElement(_semanticUiReact.Menu.Item, { name: 'open-trades', __source: {
-					fileName: _jsxFileName,
 					lineNumber: 16
 				}
-			}, _react2.default.createElement(_link2.default, { href: '', __source: {
+			}, _react2.default.createElement(_semanticUiReact.Menu.Item, { name: 'new', __source: {
 					fileName: _jsxFileName,
 					lineNumber: 17
+				}
+			}, _react2.default.createElement(_link2.default, { href: '/exchanges/new', __source: {
+					fileName: _jsxFileName,
+					lineNumber: 18
 				}
 			}, _react2.default.createElement('a', {
 				__source: {
 					fileName: _jsxFileName,
-					lineNumber: 18
+					lineNumber: 19
 				}
-			}, 'My open trades')))));
+			}, 'Create Exchange')))));
 		}
 	}]);
 
@@ -97,4 +101,4 @@ var Header = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Header;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvSGVhZGVyLmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiTWVudSIsIkxpbmsiLCJIZWFkZXIiLCJtYXJnaW5Ub3AiLCJjb2xvciIsIkNvbXBvbmVudCJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxBQUFPOzs7O0FBQ1AsQUFBUzs7QUFDVCxBQUFPOzs7Ozs7Ozs7SSxBQUVEOzs7Ozs7Ozs7OzsyQkFFSSxBQUNSOzBCQUNDLEFBQUMsdUNBQUssT0FBTyxFQUFDLFdBQWQsQUFBYSxBQUFZO2VBQXpCO2lCQUFBLEFBQ0M7QUFERDtJQUFBLGtCQUNFLGNBQUQsc0JBQUEsQUFBTSxRQUFLLE1BQVgsQUFBZ0I7ZUFBaEI7aUJBQUEsQUFDQztBQUREO3NCQUNDLEFBQUMsZ0NBQUssTUFBTixBQUFXO2VBQVg7aUJBQUEsQUFDQztBQUREO3NCQUNDLGNBQUEsT0FBRyxPQUFPLEVBQUMsT0FBWCxBQUFVLEFBQVE7ZUFBbEI7aUJBQUEsQUFBMkI7QUFBM0I7c0JBQTJCLGNBQUE7O2VBQUE7aUJBQUE7QUFBQTtBQUFBLE1BSDlCLEFBQ0MsQUFDQyxBQUNDLEFBQTJCLEFBR3ZCLDRCQUFDLGNBQUQsc0JBQUEsQUFBTSxRQUFLLFVBQVgsQUFBb0I7ZUFBcEI7aUJBQUEsQUFDTDtBQURLO3NCQUNKLGNBQUQsc0JBQUEsQUFBTSxRQUFLLE1BQVgsQUFBZ0I7ZUFBaEI7aUJBQUEsQUFDQztBQUREO3NCQUNDLEFBQUMsZ0NBQUssTUFBTixBQUFXO2VBQVg7aUJBQUEsQUFDQztBQUREO3NCQUNDLGNBQUE7O2VBQUE7aUJBQUE7QUFBQTtBQUFBLE1BVkwsQUFDQyxBQU1PLEFBQ0wsQUFDQyxBQUNDLEFBTUw7Ozs7O0VBbkJtQixnQkFBTSxBLEFBc0IzQjs7a0JBQUEsQUFBZSIsImZpbGUiOiJIZWFkZXIuanMiLCJzb3VyY2VSb290IjoiL1VzZXJzL3RvbWFtYWppYy9EZXNrdG9wL1RvbWEvRGV2L290Yy1leGNoYW5nZSJ9
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvSGVhZGVyLmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiTWVudSIsIkxpbmsiLCJPVENJbmRleCIsIkhlYWRlciIsIm1hcmdpblRvcCIsImNvbG9yIiwiQ29tcG9uZW50Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLEFBQU87Ozs7QUFDUCxBQUFTOztBQUNULEFBQU87Ozs7QUFDUCxBQUFPLEFBQWM7Ozs7Ozs7OztJQUVmLEE7Ozs7Ozs7Ozs7OzJCQUVJLEFBQ1I7MEJBQ0MsQUFBQyx1Q0FBSyxPQUFPLEVBQUMsV0FBZCxBQUFhLEFBQVk7ZUFBekI7aUJBQUEsQUFDQztBQUREO0lBQUEsa0JBQ0UsY0FBRCxzQkFBQSxBQUFNLFFBQUssTUFBWCxBQUFnQjtlQUFoQjtpQkFBQSxBQUNDO0FBREQ7c0JBQ0MsQUFBQyxnQ0FBSyxNQUFOLEFBQVc7ZUFBWDtpQkFBQSxBQUNDO0FBREQ7c0JBQ0MsY0FBQSxPQUFHLE9BQU8sRUFBQyxPQUFYLEFBQVUsQUFBUTtlQUFsQjtpQkFBQSxBQUEyQjtBQUEzQjtzQkFBMkIsY0FBQTs7ZUFBQTtpQkFBQTtBQUFBO0FBQUEsTUFIOUIsQUFDQyxBQUNDLEFBQ0MsQUFBMkIsQUFHdkIsNEJBQUMsY0FBRCxzQkFBQSxBQUFNLFFBQUssVUFBWCxBQUFvQjtlQUFwQjtpQkFBQSxBQUNMO0FBREs7c0JBQ0osY0FBRCxzQkFBQSxBQUFNLFFBQUssTUFBWCxBQUFnQjtlQUFoQjtpQkFBQSxBQUNDO0FBREQ7c0JBQ0MsQUFBQyxnQ0FBSyxNQUFOLEFBQVc7ZUFBWDtpQkFBQSxBQUNDO0FBREQ7c0JBQ0MsY0FBQTs7ZUFBQTtpQkFBQTtBQUFBO0FBQUEsTUFWTCxBQUNDLEFBTU8sQUFDTCxBQUNDLEFBQ0MsQUFNTDs7Ozs7RUFuQm1CLGdCQUFNLEEsQUFzQjNCOztrQkFBQSxBQUFlIiwiZmlsZSI6IkhlYWRlci5qcyIsInNvdXJjZVJvb3QiOiIvVXNlcnMvdG9tYW1hamljL0Rlc2t0b3AvVG9tYS9EZXYvb3RjLWV4Y2hhbmdlIn0=
